@@ -1,0 +1,20 @@
+{
+  "name": "slack-connect-4-bot",
+  "version": "0.0.0",
+  "description": "A bot that allows you to play Connect 4 on Slack",
+  "scripts": {
+    "start": "node src/main.js",
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@bitbucket.org:wgpsutherland/slack-connect-4-bot.git"
+  },
+  "keywords": [
+    "slack",
+    "connect 4",
+    "bot"
+  ],
+  "author": "wgpsutherland",
+  "license": "ISC"
+}

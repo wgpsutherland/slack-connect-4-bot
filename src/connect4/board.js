@@ -17,8 +17,8 @@ class Board {
 
     toString() {
         var display = "";
-        for(let row of this.slots) {
-            for(let slot of row) {
+        for (let i = this.slots.length - 1; i >= 0; i--) { // so board prints in the correct orientation
+            for (let slot of this.slots[i]) {
                 display += slot.toString();
             }
             display += '\n';

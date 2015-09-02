@@ -4,8 +4,8 @@ require('babel/register');
 
 //==================== LOCAL INCLUDES ===================//
 
-var Game = require('./game');
-var Player = require('./player');
+var Game = require('./connect4/game');
+var Player = require('./connect4/player');
 
 //==================== COMPONENTS =======================//
 

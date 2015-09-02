@@ -1,7 +1,12 @@
 class Player {
 
-    constructor() {
-        console.log('player initialised');
+    constructor(gameState, colour) {
+        this.gameState = gameState;
+        this.colour = colour;
+    }
+
+    makeMove(col) {
+        this.gameState.move(col, this.colour);
     }
 }
 

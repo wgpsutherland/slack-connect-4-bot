@@ -1,7 +1,7 @@
 module.exports = {
     circle: {
-        red: '\u{1F634}',
-        blue: '\u{1F635}',
+        red: '\u{1F534}',
+        blue: '\u{1F535}',
         white: '\u{26AA}'
     },
     number: {

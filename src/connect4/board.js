@@ -12,6 +12,14 @@ class Board {
         this.slots = initialiseSlots();
     }
 
+    static get width() {
+        return WIDTH;
+    }
+
+    static get height() {
+        return HEIGHT;
+    }
+
     getCounterAt(row, col) {
         return this.slots[row][col];
     }

@@ -23,6 +23,17 @@ describe('connect 4', ()  => {
             board = new Board();
         });
 
+        describe('static methods', () => {
+
+            it('should have a height of 6', () => {
+                expect(Board.height).to.equal(6);
+            });
+
+            it('should have a width of 7', () => {
+                expect(Board.width).to.equal(7);
+            });
+        });
+
         describe('on initialisation', () => {
 
             it('the slots should all be empty', () => {

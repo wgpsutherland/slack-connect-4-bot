@@ -3,6 +3,8 @@
 const chai = require('chai');
 const expect = chai.expect;
 
+const _ = require('underscore');
+
 //==================== CONSTANTS =======================//
 
 const Board = require('../../src/connect4/board');
@@ -120,6 +122,26 @@ describe('connect 4', ()  => {
                 let row = 0;
                 let col = 0;
                 expect(board.getCounterAt(row,col)).to.equal(board.slots[row][col]);
+            });
+        });
+
+        describe('isColumnFull', () => {
+
+            it('should return false when the column is not full', () => {
+                let col = 0;
+                expect(board.isColumnFull(col)).to.be.false;
+                _.times(5, () => {
+                    board.play(col, ColourEnum.RED);
+                });
+                expect(board.isColumnFull(col)).to.be.false;
+            });
+
+            it('should return true when the column is full', () => {
+                let col = 0;
+                _.times(6, () => {
+                    board.play(col, ColourEnum.RED);
+                });
+                expect(board.isColumnFull(col)).to.be.true;
             });
         });
 

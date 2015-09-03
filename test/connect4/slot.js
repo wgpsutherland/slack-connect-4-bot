@@ -3,12 +3,11 @@
 const chai = require('chai');
 const expect = chai.expect;
 
-const emoji = require('node-emoji');
-
 //==================== CONSTANTS =======================//
 
 const Slot = require('../../src/connect4/slot');
 const ColourEnum = require('../../src/connect4/colourEnum');
+const Emoji = require('../../src/connect4/emoji');
 
 //==================== TEST ============================//
 
@@ -37,7 +36,7 @@ describe('connect 4', ()  => {
             });
 
             it('should have the white_circle emoji as its symbol', () => {
-                expect(slot.symbol).to.equal(emoji.get('white_circle'));
+                expect(slot.symbol).to.equal(Emoji.circle.white);
             });
         });
 
@@ -50,20 +49,20 @@ describe('connect 4', ()  => {
 
             it('should have the red_circle emoji as its symbol when the player is red', () => {
                 slot.play(ColourEnum.RED);
-                expect(slot.symbol).to.equal(emoji.get('red_circle'));
+                expect(slot.symbol).to.equal(Emoji.circle.red);
             });
 
             it('should have the large_blue_circle emoji as its symbol when the player is blue', () => {
                 slot.play(ColourEnum.BLUE);
-                expect(slot.symbol).to.equal(emoji.get('large_blue_circle'));
+                expect(slot.symbol).to.equal(Emoji.circle.blue);
             });
         });
 
         describe('toString', () => {
 
-            const emptySlotString = emoji.get('white_circle') + ' ';
-            const redSlotString = emoji.get('red_circle') + ' ';
-            const blueSlotString = emoji.get('large_blue_circle') + ' ';
+            const emptySlotString = Emoji.circle.white + ' ';
+            const redSlotString = Emoji.circle.red + ' ';
+            const blueSlotString = Emoji.circle.blue + ' ';
 
             it('should be the white_circle emoji followed by a space when empty', () => {
                 expect(slot.toString()).to.equal(emptySlotString);

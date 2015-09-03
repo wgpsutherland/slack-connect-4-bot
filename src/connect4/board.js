@@ -1,6 +1,5 @@
-const emoji = require('node-emoji');
-
 const Slot = require('./slot');
+const Emoji = require('./emoji');
 
 const WIDTH = 7;
 const HEIGHT = 6;
@@ -23,8 +22,9 @@ class Board {
             }
             display += '\n';
         }
-        var base = ':one: :two: :three: :four: :five: :six: :seven: ';
-        display += emoji.emojify(base);
+        for(let i = 1; i<= 7; i++) {
+            display += Emoji.number[i] + ' ';
+        }
         return display;
     }
 }

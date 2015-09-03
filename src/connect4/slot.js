@@ -1,6 +1,5 @@
-const emoji = require('node-emoji');
-
 const ColourEnum = require('./colourEnum');
+const Emoji = require('./emoji');
 
 class Slot {
 
@@ -8,12 +7,12 @@ class Slot {
         this.row = row;
         this.col = col;
         this.empty = true;
-        this.symbol = emoji.get('white_circle');
+        this.symbol = Emoji.circle.white;
     }
 
     play(colour) {
         this.empty = false;
-        this.symbol = colour === ColourEnum.RED ? emoji.get('red_circle') : emoji.get('large_blue_circle');
+        this.symbol = colour === ColourEnum.RED ? Emoji.circle.red : Emoji.circle.blue;
     }
 
     toString() {

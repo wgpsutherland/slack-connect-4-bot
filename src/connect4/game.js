@@ -1,12 +1,13 @@
 const Board = require('./board');
 const Player = require('./player');
+const ColourEnum = require('../../src/connect4/colourEnum');
 
 class Game {
 
     constructor() {
         this.board = new Board();
-        this.playerOne = new Player(this, 'red');
-        this.playerTwo = new Player(this, 'blue');
+        this.playerOne = new Player(this, ColourEnum.RED);
+        this.playerTwo = new Player(this, ColourEnum.BLUE);
     }
 
     start() {

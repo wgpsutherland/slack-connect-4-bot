@@ -1,5 +1,7 @@
 const emoji = require('node-emoji');
 
+const ColourEnum = require('../../src/connect4/colourEnum');
+
 class Slot {
 
     constructor(row, col) {
@@ -11,7 +13,7 @@ class Slot {
 
     play(colour) {
         this.empty = false;
-        this.symbol = colour === 'red' ? emoji.get('red_circle') : emoji.get('large_blue_circle');
+        this.symbol = colour === ColourEnum.RED ? emoji.get('red_circle') : emoji.get('large_blue_circle');
     }
 
     toString() {

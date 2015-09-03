@@ -10,6 +10,7 @@ class Board {
 
     constructor() {
         this.slots = initialiseSlots();
+        this.gameWon = false;
     }
 
     static get width() {
@@ -31,6 +32,7 @@ class Board {
         })[col];
         slot.play(colour);
         this.lastPlayedSlot = slot;
+        this.checkWon();
         return slot;
     }
 
@@ -44,6 +46,11 @@ class Board {
         return _.every(topRow, (slot) => {
             return !slot.empty;
         });
+    }
+
+    checkWon() {
+        //check
+        this.gameWon = false; //result of check
     }
 
     toString() {

@@ -8,25 +8,25 @@ class Game {
         this.board = new Board();
         this.playerOne = new Player(ColourEnum.RED);
         this.playerTwo = new Player(ColourEnum.BLUE);
-        this.currentPlayer = this.playerOne;
         this.gameOver = false;
     }
 
     play() {
-
-        while(!this.gameOver) {
-            console.log('it is a players turn'); // do the new string ${} thing
+        while (!this.gameOver) {
+            this.nextTurn(); // change the current player to the other
+            console.log(`It is the ${this.currentPlayer.colour} player's turn`);
             var self = this;
             this.currentPlayer.makeMove(self);
-            // check if the game is won
-            // change the current player to the other
+            this.gameOver = this.isGameOver();
+            console.log(this.board.toString());
         }
-
-        this.playerOne.makeMove(0);
-        this.playerTwo.makeMove(1);
-        this.playerOne.makeMove(3);
-        this.playerTwo.makeMove(3);
-        this.playerOne.makeMove(3);
+        console.log('--');
+        console.log(this.board.toString());
+        if(this.board.gameWon) {
+            console.log(`player ${this.currentPlayer.colour} won`)
+        } else {
+            console.log(`the board is full, it is a draw`);
+        }
     }
 
     move(col, colour) {
@@ -35,11 +35,14 @@ class Game {
         this.board.play(col, colour);
     }
 
-        // throw error if column is full
-        // throw error if the column is invalid
+    isGameOver() {
+        return this.board.isBoardFull() || this.board.gameWon; // is there a winner
+    }
 
-        // so when the board.play(col) is actually called, it will definitely work
-        this.board.play(col, colour);
+    nextTurn() {
+        this.currentPlayer = this.currentPlayer === this.playerOne
+            ? this.playerTwo
+            : this.playerOne;
     }
 }
 

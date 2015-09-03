@@ -12,7 +12,8 @@ class Slot {
 
     play(colour) {
         this.empty = false;
-        this.symbol = colour === ColourEnum.RED ? Emoji.circle.red : Emoji.circle.blue;
+        this.colour = colour;
+        this.symbol = this.colour === ColourEnum.RED ? Emoji.circle.red : Emoji.circle.blue;
     }
 
     toString() {

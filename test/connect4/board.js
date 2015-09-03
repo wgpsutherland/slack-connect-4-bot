@@ -60,5 +60,71 @@ describe('connect 4', ()  => {
                 }
             });
         });
+
+        describe('play', () => {
+
+            it('should fill the first free slot in the given column', () => {
+                let col = 0;
+                expect(board.getCounterAt(0, col).empty).to.be.true;
+                let played = board.play(col, ColourEnum.RED);
+                expect(played.empty).to.be.false;
+                expect(board.getCounterAt(0, col).empty).to.be.false;
+
+                col = 1;
+                board.play(col, ColourEnum.RED);
+                board.play(col, ColourEnum.RED);
+                expect(board.getCounterAt(2, col).empty).to.be.true;
+                played = board.play(col, ColourEnum.RED);
+                expect(played.empty).to.be.false;
+                expect(board.getCounterAt(2, col).empty).to.be.false;
+
+                col = 2;
+                played = board.play(col, ColourEnum.RED);
+                expect(played.row).to.equal(0);
+                played = board.play(col, ColourEnum.RED);
+                expect(played.row).to.equal(1);
+                played = board.play(col, ColourEnum.RED);
+                expect(played.row).to.equal(2);
+                played = board.play(col, ColourEnum.RED);
+                expect(played.row).to.equal(3);
+            });
+
+            it('should make the played counter the colour given', () => {
+                let colour = ColourEnum.RED;
+                let col = 0;
+                let played = board.play(col, colour);
+                expect(played.colour).to.equal(colour);
+            });
+
+            it('should change the lastPlayedSlot to the slot just played', () => {
+                let lastPlayed = board.play(0, ColourEnum.RED);
+                expect(board.lastPlayedSlot).to.equal(lastPlayed);
+                lastPlayed = board.play(0, ColourEnum.BLUE);
+                expect(board.lastPlayedSlot).to.equal(lastPlayed);
+            });
+
+            it('should return the slot just played', () => {
+                let played = board.play(0, ColourEnum.RED);
+                expect(played.col).to.equal(0);
+                expect(played.row).to.equal(0);
+                board.play(0, ColourEnum.RED);
+                board.play(0, ColourEnum.RED);
+                played = board.play(0, ColourEnum.RED);
+                expect(played.col).to.equal(0);
+                expect(played.row).to.equal(3);
+            });
+        });
+
+        describe('getCounterAt', () => {
+            it('should return the correct counter', () => {
+                let row = 0;
+                let col = 0;
+                expect(board.getCounterAt(row,col)).to.equal(board.slots[row][col]);
+            });
+        });
+
+        describe('toString', () => {
+
+        });
     });
 });

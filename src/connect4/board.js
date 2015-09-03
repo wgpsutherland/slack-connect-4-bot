@@ -23,6 +23,7 @@ class Board {
         })[col];
         slot.play(colour);
         this.lastPlayedSlot = slot;
+        return slot;
     }
 
     toString() {

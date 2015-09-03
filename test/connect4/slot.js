@@ -35,6 +35,10 @@ describe('connect 4', ()  => {
                 expect(slot.empty).to.be.true;
             });
 
+            it('should not have a colour', () => {
+                expect(slot.colour).to.be.undefined;
+            });
+
             it('should have the white_circle emoji as its symbol', () => {
                 expect(slot.symbol).to.equal(Emoji.circle.white);
             });
@@ -52,9 +56,19 @@ describe('connect 4', ()  => {
                 expect(slot.symbol).to.equal(Emoji.circle.red);
             });
 
+            it('should have a colour of red when the player is red', () => {
+                slot.play(ColourEnum.RED);
+                expect(slot.colour).to.equal(ColourEnum.RED);
+            });
+
             it('should have the large_blue_circle emoji as its symbol when the player is blue', () => {
                 slot.play(ColourEnum.BLUE);
                 expect(slot.symbol).to.equal(Emoji.circle.blue);
+            });
+
+            it('should have a colour of blue when the player is blue', () => {
+                slot.play(ColourEnum.BLUE);
+                expect(slot.colour).to.equal(ColourEnum.BLUE);
             });
         });
 

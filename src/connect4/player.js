@@ -5,8 +5,20 @@ class Player {
     }
 
     makeMove(gameState) {
-        let col = 0; // this needs to be more intelligent - obviously
-        gameState.move(col, this.colour);
+
+        var slotted = false;
+
+        while(!slotted) {
+            try {
+                let col = Math.trunc(Math.random() * 7);
+                gameState.move(col, this.colour);
+                slotted = true;
+            }
+            catch(error) {
+                // do nothing
+            }
+        }
+
     }
 }
 

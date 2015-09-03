@@ -6,11 +6,22 @@ class Game {
 
     constructor() {
         this.board = new Board();
-        this.playerOne = new Player(this, ColourEnum.RED);
-        this.playerTwo = new Player(this, ColourEnum.BLUE);
+        this.playerOne = new Player(ColourEnum.RED);
+        this.playerTwo = new Player(ColourEnum.BLUE);
+        this.currentPlayer = this.playerOne;
+        this.gameOver = false;
     }
 
     play() {
+
+        while(!this.gameOver) {
+            console.log('it is a players turn'); // do the new string ${} thing
+            var self = this;
+            this.currentPlayer.makeMove(self);
+            // check if the game is won
+            // change the current player to the other
+        }
+
         this.playerOne.makeMove(0);
         this.playerTwo.makeMove(1);
         this.playerOne.makeMove(3);

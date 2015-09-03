@@ -1,12 +1,12 @@
 class Player {
 
-    constructor(gameState, colour) {
-        this.gameState = gameState;
+    constructor(colour) {
         this.colour = colour;
     }
 
-    makeMove(col) {
-        this.gameState.move(col, this.colour);
+    makeMove(gameState) {
+        let col = 0; // this needs to be more intelligent - obviously
+        gameState.move(col, this.colour);
     }
 }
 

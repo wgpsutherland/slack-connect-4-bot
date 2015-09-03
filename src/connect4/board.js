@@ -31,6 +31,13 @@ class Board {
         return !topRow[col].empty;
     }
 
+    isBoardFull() {
+        let topRow = this.slots[this.slots.length - 1];
+        return _.every(topRow, (slot) => {
+            return !slot.empty;
+        });
+    }
+
     toString() {
         let display = "";
         for (let i = this.slots.length - 1; i >= 0; i--) { // so board prints in the correct orientation

@@ -145,6 +145,33 @@ describe('connect 4', ()  => {
             });
         });
 
+        describe('isBoardFull', () => {
+
+            it('should return false when the board is not full', () => {
+                expect(board.isBoardFull()).to.be.false;
+                // fill all columns but the last
+                _.times(6, (i) => {
+                    _.times(6, () => {
+                        board.play(i, ColourEnum.RED);
+                    });
+                });
+                // final column leave one space at the top
+                _.times(5, () => {
+                    board.play(6, ColourEnum.RED);
+                });
+                expect(board.isBoardFull()).to.be.false;
+            });
+
+            it('should return true when the board is full', () => {
+                _.times(7, (i) => {
+                    _.times(6, () => {
+                        board.play(i, ColourEnum.RED);
+                    });
+                });
+                expect(board.isBoardFull()).to.be.true;
+            });
+        });
+
         describe('toString', () => {
 
         });

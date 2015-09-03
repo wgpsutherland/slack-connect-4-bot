@@ -54,15 +54,11 @@ class Board {
 }
 
 function initialiseSlots() {
-    let rows = [];
-    for (let i = 0; i < HEIGHT; i++) {
-        let columns = [];
-        for (let j = 0; j < WIDTH; j++) {
-            columns.push(new Slot(i, j));
-        }
-        rows.push(columns);
-    }
-    return rows;
+    return _.map(new Array(HEIGHT), (a, i) => {
+        return _.map(new Array(WIDTH), (b, j) => {
+            return new Slot(i, j)
+        });
+    });
 }
 
 module.exports = Board;

@@ -1,6 +1,6 @@
 const Board = require('./board');
 const Player = require('./player');
-const ColourEnum = require('../../src/connect4/colourEnum');
+const ColourEnum = require('./colourEnum');
 
 class Game {
 

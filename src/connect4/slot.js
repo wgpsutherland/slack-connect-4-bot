@@ -1,6 +1,6 @@
 const emoji = require('node-emoji');
 
-const ColourEnum = require('../../src/connect4/colourEnum');
+const ColourEnum = require('./colourEnum');
 
 class Slot {
 

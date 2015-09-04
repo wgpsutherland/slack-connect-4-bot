@@ -29,13 +29,12 @@ class Board {
 
     play(col, colour) {
         // finds the first empty slot in the column from the bottom up
-        let slot = _.find(this.slots, (row) => {
+        this.lastPlayedSlot = _.find(this.slots, (row) => {
             return row[col].empty;
         })[col];
-        slot.play(colour);
-        this.lastPlayedSlot = slot;
-        this.checkWon();
-        return slot;
+        this.lastPlayedSlot.play(colour);
+        this.gameWon = this.checkWon();
+        return this.lastPlayedSlot;
     }
 
     isColumnFull(col) {
@@ -51,31 +50,15 @@ class Board {
     }
 
     checkWon() {
-
-        //let col = this.lastPlayedSlot.col;
-        //let row = this.lastPlayedSlot.row;
         let winString = this.lastPlayedSlot.symbol.repeat(4);
-
-        let horizontalString = this.bsg.genHorizontalString(this.lastPlayedSlot);
-        let verticalString = this.bsg.genVerticalString(this.lastPlayedSlot);
-        let rightDiagString = this.bsg.genRightDiagString(this.lastPlayedSlot);
-        let leftDiagString = this.bsg.genLeftDiagString(this.lastPlayedSlot);
-        console.log('horizontal', horizontalString);
-        console.log('vertical', verticalString);
-        console.log('right diag', rightDiagString);
-        console.log('left diag', leftDiagString);
-
-        // check horizontal
-        //create string of the horizontal board going through slot
-
-
-        // check vertical
-        // check diag right
-        // check diag left
-
-
-        //check the wins surrounding the last played slot
-        this.gameWon = false; //result of check
+        let h = this.bsg.genHorizontalString(this.lastPlayedSlot);
+        let v = this.bsg.genVerticalString(this.lastPlayedSlot);
+        let rd = this.bsg.genRightDiagString(this.lastPlayedSlot);
+        let ld = this.bsg.genLeftDiagString(this.lastPlayedSlot);
+        return h.includes(winString) ||
+            v.includes(winString) ||
+            rd.includes(winString) ||
+            ld.includes(winString);
     }
 
     toString() {

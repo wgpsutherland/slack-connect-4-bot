@@ -4,7 +4,8 @@ module.exports = {
     circle: {
         red: '\u{1F534}',
         blue: '\u{1F535}',
-        white: '\u{26AA}'
+        white: '\u{26AA}',
+        black: '\u{26AB}'
     },
     number: {
         0: '\u0030' + numModifier,

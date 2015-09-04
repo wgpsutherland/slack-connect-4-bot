@@ -312,6 +312,13 @@ describe('connect 4', ()  => {
                 it('should return true when a player wins against the far left column');
                 it('should return true when a player wins against the far right column');
             });
+
+            describe('four in a row but not the same colour', () => {
+                it('should return false horizontal');
+                it('should return false vertical');
+                it('should return false right diagonal');
+                it('should return false left diagonal');
+            });
         });
 
         describe('toString', () => {

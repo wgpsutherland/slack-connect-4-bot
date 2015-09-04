@@ -9,16 +9,14 @@ class BoardStringGenerator {
     }
 
     genHorizontalString(counter) {
-        var self = this;
-        return _.map(self.slots[counter.row], (slot) => {
+        return _.map(this.slots[counter.row], (slot) => {
             return slot.symbol;
         }).join('');
     }
 
     genVerticalString(counter) {
-        var self = this;
         return _
-            .chain(self.slots)
+            .chain(this.slots)
             .map((row) => {
                 return row[counter.col];
             })

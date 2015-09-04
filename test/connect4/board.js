@@ -194,6 +194,37 @@ describe('connect 4', ()  => {
 
         describe('checkWon', () => {
 
+            describe('winning horizontally', () => {
+                it('should return true when a player wins');
+                it('should return true when a player wins on the top row');
+                it('should return true when a player wins on the bottom row');
+                it('should return true when a player wins against the far left column');
+                it('should return true when a player wins against the far right column');
+            });
+
+            describe('winning vertically', () => {
+                it('should return true when a player wins');
+                it('should return true when a player wins on the top row');
+                it('should return true when a player wins on the bottom row');
+                it('should return true when a player wins against the far left column');
+                it('should return true when a player wins against the far right column');
+            });
+
+            describe('winning diagonally right', () => {
+                it('should return true when a player wins');
+                it('should return true when a player wins from the bottom left corner');
+                it('should return true when a player wins from the top right corner');
+                it('should return true when a player wins against the far left column');
+                it('should return true when a player wins against the far right column');
+            });
+
+            describe('winning diagonally left', () => {
+                it('should return true when a player wins');
+                it('should return true when a player wins from the bottom right corner');
+                it('should return true when a player wins from the top left corner');
+                it('should return true when a player wins against the far left column');
+                it('should return true when a player wins against the far right column');
+            });
         });
 
         describe('toString', () => {

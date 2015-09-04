@@ -49,6 +49,12 @@ class Board {
         });
     }
 
+    /**
+     * checks whether the counter just played was a winning move for that player.
+     * only looks at the positions that the counter is in, and only to see if the player
+     * that just played has won, not both players.
+     * @returns {boolean}
+     */
     checkWon() {
         let winString = this.lastPlayedSlot.symbol.repeat(4);
         let potentialWinString = this.bsg.genPotentialWinString(this.lastPlayedSlot);

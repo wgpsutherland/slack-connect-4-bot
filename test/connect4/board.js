@@ -202,11 +202,11 @@ describe('connect 4', ()  => {
                         . . . . . . .
                         . . . . . . .
                         . . R R R R .
-                        . . B R B R .  */
-                    board.play(2, ColourEnum.BLUE);
-                    board.play(3, ColourEnum.RED);
-                    board.play(4, ColourEnum.BLUE);
-                    board.play(5, ColourEnum.RED);
+                        . . . . . . .  */
+                    board.play(2, ColourEnum.BLANK);
+                    board.play(3, ColourEnum.BLANK);
+                    board.play(4, ColourEnum.BLANK);
+                    board.play(5, ColourEnum.BLANK);
                     board.play(2, ColourEnum.RED);
                     board.play(3, ColourEnum.RED);
                     board.play(4, ColourEnum.RED);

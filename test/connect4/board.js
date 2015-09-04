@@ -126,6 +126,15 @@ describe('connect 4', ()  => {
                 expect(played.col).to.equal(0);
                 expect(played.row).to.equal(3);
             });
+
+            it('should change gameWon to true if the game is won by playing that turn', () => {
+                expect(board.gameWon).to.be.false;
+                board.play(0, ColourEnum.RED);
+                board.play(0, ColourEnum.RED);
+                board.play(0, ColourEnum.RED);
+                board.play(0, ColourEnum.RED);
+                expect(board.gameWon).to.be.true;
+            });
         });
 
         describe('getCounterAt', () => {
@@ -181,6 +190,10 @@ describe('connect 4', ()  => {
                 });
                 expect(board.isBoardFull()).to.be.true;
             });
+        });
+
+        describe('checkWon', () => {
+
         });
 
         describe('toString', () => {

@@ -8,6 +8,15 @@ class BoardStringGenerator {
         this.height = height;
     }
 
+    genPotentialWinString(counter) {
+        return [
+            this.genHorizontalString(counter),
+            this.genLeftDiagString(counter),
+            this.genVerticalString(counter),
+            this.genRightDiagString(counter)
+        ].join('-');
+    }
+
     genHorizontalString(counter) {
         return _.map(this.slots[counter.row], (slot) => {
             return slot.symbol;

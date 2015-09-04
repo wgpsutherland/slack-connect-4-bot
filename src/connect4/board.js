@@ -51,14 +51,8 @@ class Board {
 
     checkWon() {
         let winString = this.lastPlayedSlot.symbol.repeat(4);
-        let h = this.bsg.genHorizontalString(this.lastPlayedSlot);
-        let v = this.bsg.genVerticalString(this.lastPlayedSlot);
-        let rd = this.bsg.genRightDiagString(this.lastPlayedSlot);
-        let ld = this.bsg.genLeftDiagString(this.lastPlayedSlot);
-        return h.includes(winString) ||
-            v.includes(winString) ||
-            rd.includes(winString) ||
-            ld.includes(winString);
+        let potentialWinString = this.bsg.genPotentialWinString(this.lastPlayedSlot);
+        return potentialWinString.includes(winString);
     }
 
     toString() {

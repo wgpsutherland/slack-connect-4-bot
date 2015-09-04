@@ -1,13 +1,5 @@
-//==================== NODE MODULES =====================//
-
 require('babel/register');
 const http = require('http');
-
-//==================== LOCAL INCLUDES ===================//
-
-const Bot = require('./bot/bot');
-
-//==================== RUN ==============================//
 
 try {
     const fs = require('fs');
@@ -18,6 +10,7 @@ try {
     return;
 }
 
+const Bot = require('./bot/bot');
 const bot = new Bot(token);
 bot.login();
 

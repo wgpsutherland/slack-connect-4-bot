@@ -4,13 +4,12 @@ require('babel/register');
 
 //==================== LOCAL INCLUDES ===================//
 
-var Game = require('./connect4/game');
-var Player = require('./connect4/player');
+const Bot = require('./bot/bot');
 
 //==================== COMPONENTS =======================//
 
-var connect4Game = new Game();
-connect4Game.play();
-console.log(connect4Game.board.toString());
+const bot = new Bot('hello');
 
 //==================== RUN ==============================//
+
+bot.login();

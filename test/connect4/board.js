@@ -387,7 +387,7 @@ describe('connect 4', ()  => {
                 });
             });
 
-            describe('winning diagonally right', () => {
+            describe('winning diagonally up', () => {
 
                 it('should return true when a player wins', () => {
                     /*
@@ -579,7 +579,7 @@ describe('connect 4', ()  => {
                 });
             });
 
-            describe('winning diagonally left', () => {
+            describe('winning diagonally down', () => {
 
                 it('should return true when a player wins', () => {
                     /*
@@ -806,7 +806,7 @@ describe('connect 4', ()  => {
                     expect(board.gameWon).to.be.false;
                 });
 
-                it('should return false right diagonal', () => {
+                it('should return false up diagonal', () => {
                     /*
                      . . . . . . .
                      . . . . . . .
@@ -828,7 +828,7 @@ describe('connect 4', ()  => {
                     expect(board.gameWon).to.be.false;
                 });
 
-                it('should return false left diagonal', () => {
+                it('should return false down diagonal', () => {
                     /*
                      . . . . . . .
                      . . . . . . .
@@ -854,6 +854,7 @@ describe('connect 4', ()  => {
 
         describe('toString', () => {
 
+        });
         });
     });
 });

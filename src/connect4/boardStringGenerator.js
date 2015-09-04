@@ -11,9 +11,9 @@ class BoardStringGenerator {
     genPotentialWinString(counter) {
         return [
             this.genHorizontalString(counter),
-            this.genLeftDiagString(counter),
+            this.genDownDiagString(counter),
             this.genVerticalString(counter),
-            this.genRightDiagString(counter)
+            this.genUpDiagString(counter)
         ].join('-');
     }
 
@@ -36,7 +36,7 @@ class BoardStringGenerator {
             .join('');
     }
 
-    genRightDiagString(counter) {
+    genUpDiagString(counter) {
         let col = counter.col;
         let row = counter.row;
         // finds the starting point in the bottom left quadrant
@@ -53,7 +53,7 @@ class BoardStringGenerator {
         return returning;
     }
 
-    genLeftDiagString(counter) {
+    genDownDiagString(counter) {
         let col = counter.col;
         let row = counter.row;
         // finds the starting point in the bottom right quadrant

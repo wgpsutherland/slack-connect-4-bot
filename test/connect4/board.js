@@ -388,11 +388,141 @@ describe('connect 4', ()  => {
             });
 
             describe('winning diagonally right', () => {
-                it('should return true when a player wins');
-                it('should return true when a player wins from the bottom left corner');
-                it('should return true when a player wins from the top right corner');
-                it('should return true when a player wins against the far left column');
-                it('should return true when a player wins against the far right column');
+
+                it('should return true when a player wins', () => {
+                    /*
+                     . . . . . . .
+                     . . . . . R .
+                     . . . . R . .
+                     . . . R . . .
+                     . . R . . . .
+                     . . . . . . .
+                     */
+                    board.play(2, ColourEnum.BLANK);
+                    board.play(3, ColourEnum.BLANK);
+                    board.play(3, ColourEnum.BLANK);
+                    board.play(4, ColourEnum.BLANK);
+                    board.play(4, ColourEnum.BLANK);
+                    board.play(4, ColourEnum.BLANK);
+                    board.play(5, ColourEnum.BLANK);
+                    board.play(5, ColourEnum.BLANK);
+                    board.play(5, ColourEnum.BLANK);
+                    board.play(5, ColourEnum.BLANK);
+                    board.play(2, ColourEnum.RED);
+                    board.play(3, ColourEnum.RED);
+                    board.play(4, ColourEnum.RED);
+                    expect(board.gameWon).to.be.false;
+                    board.play(5, ColourEnum.RED);
+                    expect(board.gameWon).to.be.true;
+                });
+
+                it('should return true when a player wins from the bottom left corner', () => {
+                    /*
+                     . . . . . . .
+                     . . . . . . .
+                     . . . R . . .
+                     . . R . . . .
+                     . R . . . . .
+                     R . . . . . .
+                     */
+                    board.play(1, ColourEnum.BLANK);
+                    board.play(2, ColourEnum.BLANK);
+                    board.play(2, ColourEnum.BLANK);
+                    board.play(3, ColourEnum.BLANK);
+                    board.play(3, ColourEnum.BLANK);
+                    board.play(3, ColourEnum.BLANK);
+                    board.play(0, ColourEnum.RED);
+                    board.play(1, ColourEnum.RED);
+                    board.play(2, ColourEnum.RED);
+                    expect(board.gameWon).to.be.false;
+                    board.play(3, ColourEnum.RED);
+                    expect(board.gameWon).to.be.true;
+                });
+
+                it('should return true when a player wins from the top right corner', () => {
+                    /*
+                     . . . . . . R
+                     . . . . . R .
+                     . . . . R . .
+                     . . . R . . .
+                     . . . . . . .
+                     . . . . . . .
+                     */
+                    board.play(3, ColourEnum.BLANK);
+                    board.play(3, ColourEnum.BLANK);
+                    board.play(4, ColourEnum.BLANK);
+                    board.play(4, ColourEnum.BLANK);
+                    board.play(4, ColourEnum.BLANK);
+                    board.play(5, ColourEnum.BLANK);
+                    board.play(5, ColourEnum.BLANK);
+                    board.play(5, ColourEnum.BLANK);
+                    board.play(5, ColourEnum.BLANK);
+                    board.play(6, ColourEnum.BLANK);
+                    board.play(6, ColourEnum.BLANK);
+                    board.play(6, ColourEnum.BLANK);
+                    board.play(6, ColourEnum.BLANK);
+                    board.play(6, ColourEnum.BLANK);
+                    board.play(3, ColourEnum.RED);
+                    board.play(4, ColourEnum.RED);
+                    board.play(5, ColourEnum.RED);
+                    expect(board.gameWon).to.be.false;
+                    board.play(6, ColourEnum.RED);
+                    expect(board.gameWon).to.be.true;
+                });
+
+                it('should return true when a player wins against the far left column', () => {
+                    /*
+                     . . . . . . .
+                     . . . R . . .
+                     . . R . . . .
+                     . R . . . . .
+                     R . . . . . .
+                     . . . . . . .
+                     */
+                    board.play(0, ColourEnum.BLANK);
+                    board.play(1, ColourEnum.BLANK);
+                    board.play(1, ColourEnum.BLANK);
+                    board.play(2, ColourEnum.BLANK);
+                    board.play(2, ColourEnum.BLANK);
+                    board.play(2, ColourEnum.BLANK);
+                    board.play(3, ColourEnum.BLANK);
+                    board.play(3, ColourEnum.BLANK);
+                    board.play(3, ColourEnum.BLANK);
+                    board.play(3, ColourEnum.BLANK);
+                    board.play(0, ColourEnum.RED);
+                    board.play(1, ColourEnum.RED);
+                    board.play(2, ColourEnum.RED);
+                    expect(board.gameWon).to.be.false;
+                    board.play(3, ColourEnum.RED);
+                    expect(board.gameWon).to.be.true;
+                });
+
+                it('should return true when a player wins against the far right column', () => {
+                    /*
+                     . . . . . . .
+                     . . . . . . R
+                     . . . . . R .
+                     . . . . R . .
+                     . . . R . . .
+                     . . . . . . .
+                     */
+                    board.play(3, ColourEnum.BLANK);
+                    board.play(4, ColourEnum.BLANK);
+                    board.play(4, ColourEnum.BLANK);
+                    board.play(5, ColourEnum.BLANK);
+                    board.play(5, ColourEnum.BLANK);
+                    board.play(5, ColourEnum.BLANK);
+                    board.play(6, ColourEnum.BLANK);
+                    board.play(6, ColourEnum.BLANK);
+                    board.play(6, ColourEnum.BLANK);
+                    board.play(6, ColourEnum.BLANK);
+                    board.play(3, ColourEnum.RED);
+                    board.play(4, ColourEnum.RED);
+                    board.play(5, ColourEnum.RED);
+                    expect(board.gameWon).to.be.false;
+                    board.play(6, ColourEnum.RED);
+                    expect(board.gameWon).to.be.true;
+                });
             });
 
             describe('winning diagonally left', () => {

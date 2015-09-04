@@ -29,13 +29,12 @@ class Board {
 
     play(col, colour) {
         // finds the first empty slot in the column from the bottom up
-        let slot = _.find(this.slots, (row) => {
+        this.lastPlayedSlot = _.find(this.slots, (row) => {
             return row[col].empty;
         })[col];
-        slot.play(colour);
-        this.lastPlayedSlot = slot;
-        this.checkWon();
-        return slot;
+        this.lastPlayedSlot.play(colour);
+        this.gameWon = this.checkWon();
+        return this.lastPlayedSlot;
     }
 
     isColumnFull(col) {
@@ -50,19 +49,14 @@ class Board {
         });
     }
 
+    /**
+     * checks whether the counter just played was a winning move for that player.
+     * only looks at the positions that the counter is in, and only to see if the player
+     * that just played has won, not both players.
+     * @returns {boolean}
+     */
     checkWon() {
-
-        let winString = this.lastPlayedSlot.symbol.repeat(4);
-
-        let hString = this.bsg.genHorizontalString(this.lastPlayedSlot);
-        let vString = this.bsg.genVerticalString(this.lastPlayedSlot);
-        let rdString = this.bsg.genRightDiagString(this.lastPlayedSlot);
-        let ldString = this.bsg.genLeftDiagString(this.lastPlayedSlot);
-
-        if(hString.includes(winString)) this.gameWon = true;
-        if(vString.includes(winString)) this.gameWon = true;
-        if(rdString.includes(winString)) this.gameWon = true;
-        if(ldString.includes(winString)) this.gameWon = true;
+        return this.bsg.checkWon(this.lastPlayedSlot);
     }
 
     toString() {

@@ -21,7 +21,6 @@ class Game {
             console.log(this.board.toString());
         }
         console.log('--');
-        console.log(this.board.toString());
         if(this.board.gameWon) {
             console.log(`player ${this.currentPlayer.colour} won`)
         } else {
@@ -36,7 +35,7 @@ class Game {
     }
 
     isGameOver() {
-        return this.board.isBoardFull() || this.board.gameWon; // is there a winner
+        return this.board.isBoardFull() || this.board.gameWon;
     }
 
     nextTurn() {

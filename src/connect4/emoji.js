@@ -2,9 +2,13 @@ const numModifier = '\uFE0F\u20E3';
 
 module.exports = {
     circle: {
-        red: '\u{1F534}',
-        blue: '\u{1F535}',
-        white: '\u{26AA}',
+        //red: '\u{1F534}',
+        //blue: '\u{1F535}',
+        //white: '\u{26AA}',
+        //black: '\u{26AB}'
+        red: 'R',
+        blue: 'B',
+        white: '.',
         black: '\u{26AB}'
     },
     number: {

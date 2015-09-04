@@ -1,16 +1,19 @@
-//==================== NODE MODULES =====================//
-
 require('babel/register');
+const http = require('http');
 
-//==================== LOCAL INCLUDES ===================//
+try {
+    const fs = require('fs');
+    const pathToken = process.env.SLACK_CONNECT_4_BOT_TOKEN;
+    const token = pathToken || fs.readFileSync('token.txt', 'utf-8').trim();
+} catch(error) {
+    console.log('You need to put your API token in a token.txt file');
+    return;
+}
 
-var Game = require('./connect4/game');
-var Player = require('./connect4/player');
+const Bot = require('./bot/bot');
+const bot = new Bot(token);
+bot.login();
 
-//==================== COMPONENTS =======================//
-
-var connect4Game = new Game();
-connect4Game.play();
-console.log(connect4Game.board.toString());
-
-//==================== RUN ==============================//
+http.createServer(function(req, res) {
+    res.end('SLACK_CONNECT_4_BOT');
+}).listen(process.env.port || 5000);

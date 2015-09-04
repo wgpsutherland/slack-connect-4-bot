@@ -8,17 +8,30 @@ class BoardStringGenerator {
         this.height = height;
     }
 
+    checkWon(counter) {
+        let winString = counter.symbol.repeat(4);
+        let potentialWinString = this.genPotentialWinString(counter);
+        return potentialWinString.includes(winString);
+    }
+
+    genPotentialWinString(counter) {
+        return [
+            this.genHorizontalString(counter),
+            this.genDownDiagString(counter),
+            this.genVerticalString(counter),
+            this.genUpDiagString(counter)
+        ].join('-');
+    }
+
     genHorizontalString(counter) {
-        var self = this;
-        return _.map(self.slots[counter.row], (slot) => {
+        return _.map(this.slots[counter.row], (slot) => {
             return slot.symbol;
         }).join('');
     }
 
     genVerticalString(counter) {
-        var self = this;
         return _
-            .chain(self.slots)
+            .chain(this.slots)
             .map((row) => {
                 return row[counter.col];
             })
@@ -29,7 +42,7 @@ class BoardStringGenerator {
             .join('');
     }
 
-    genRightDiagString(counter) {
+    genUpDiagString(counter) {
         let col = counter.col;
         let row = counter.row;
         // finds the starting point in the bottom left quadrant
@@ -46,7 +59,7 @@ class BoardStringGenerator {
         return returning;
     }
 
-    genLeftDiagString(counter) {
+    genDownDiagString(counter) {
         let col = counter.col;
         let row = counter.row;
         // finds the starting point in the bottom right quadrant

@@ -197,12 +197,14 @@ describe('connect 4', ()  => {
             describe('winning horizontally', () => {
 
                 it('should return true when a player wins', () => {
-                    /*  . . . . . . .
-                        . . . . . . .
-                        . . . . . . .
-                        . . . . . . .
-                        . . R R R R .
-                        . . . . . . .  */
+                    /*
+                     . . . . . . .
+                     . . . . . . .
+                     . . . . . . .
+                     . . . . . . .
+                     . . R R R R .
+                     . . . . . . .
+                     */
                     board.play(2, ColourEnum.BLANK);
                     board.play(3, ColourEnum.BLANK);
                     board.play(4, ColourEnum.BLANK);
@@ -210,14 +212,81 @@ describe('connect 4', ()  => {
                     board.play(2, ColourEnum.RED);
                     board.play(3, ColourEnum.RED);
                     board.play(4, ColourEnum.RED);
+                    expect(board.gameWon).to.be.false;
                     board.play(5, ColourEnum.RED);
                     expect(board.gameWon).to.be.true;
                 });
 
-                it('should return true when a player wins on the top row');
-                it('should return true when a player wins on the bottom row');
-                it('should return true when a player wins against the far left column');
-                it('should return true when a player wins against the far right column');
+                it('should return true when a player wins on the top row', () => {
+                    /*
+                     . R R R R . .
+                     . . . . . . .
+                     . . . . . . .
+                     . . . . . . .
+                     . . . . . . .
+                     . . . . . . .
+                     */
+                    _.times(4, (i) => {
+                        _.times(5, () => {
+                            board.play(i + 1, ColourEnum.BLANK);
+                        });
+                    });
+                    board.play(1, ColourEnum.RED);
+                    board.play(2, ColourEnum.RED);
+                    board.play(3, ColourEnum.RED);
+                    expect(board.gameWon).to.be.false;
+                    board.play(4, ColourEnum.RED);
+                    expect(board.gameWon).to.be.true;
+                });
+                it('should return true when a player wins on the bottom row', () => {
+                    /*
+                     . . . . . . .
+                     . . . . . . .
+                     . . . . . . .
+                     . . . . . . .
+                     . . . . . . .
+                     . R R R R . .
+                     */
+                    board.play(1, ColourEnum.RED);
+                    board.play(2, ColourEnum.RED);
+                    board.play(3, ColourEnum.RED);
+                    expect(board.gameWon).to.be.false;
+                    board.play(4, ColourEnum.RED);
+                    expect(board.gameWon).to.be.true;
+                });
+                it('should return true when a player wins against the far left column', () => {
+                    /*
+                     . . . . . . .
+                     . . . . . . .
+                     . . . . . . .
+                     . . . . . . .
+                     . . . . . . .
+                     R R R R . . .
+                     */
+                    board.play(0, ColourEnum.RED);
+                    board.play(1, ColourEnum.RED);
+                    board.play(2, ColourEnum.RED);
+                    expect(board.gameWon).to.be.false;
+                    board.play(3, ColourEnum.RED);
+                    expect(board.gameWon).to.be.true;
+                });
+                it('should return true when a player wins against the far right column', () => {
+                    /*
+                     . . . . . . .
+                     . . . . . . .
+                     . . . . . . .
+                     . . . . . . .
+                     . . . . . . .
+                     . . . R R R R
+                     */
+                    board.play(3, ColourEnum.RED);
+                    board.play(4, ColourEnum.RED);
+                    board.play(5, ColourEnum.RED);
+                    expect(board.gameWon).to.be.false;
+                    board.play(6, ColourEnum.RED);
+                    console.log(board.toString());
+                    expect(board.gameWon).to.be.true;
+                });
             });
 
             describe('winning vertically', () => {

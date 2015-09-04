@@ -52,30 +52,17 @@ class Board {
 
     checkWon() {
 
-        //let col = this.lastPlayedSlot.col;
-        //let row = this.lastPlayedSlot.row;
         let winString = this.lastPlayedSlot.symbol.repeat(4);
 
-        let horizontalString = this.bsg.genHorizontalString(this.lastPlayedSlot);
-        let verticalString = this.bsg.genVerticalString(this.lastPlayedSlot);
-        let rightDiagString = this.bsg.genRightDiagString(this.lastPlayedSlot);
-        let leftDiagString = this.bsg.genLeftDiagString(this.lastPlayedSlot);
-        console.log('horizontal', horizontalString);
-        console.log('vertical', verticalString);
-        console.log('right diag', rightDiagString);
-        console.log('left diag', leftDiagString);
+        let hString = this.bsg.genHorizontalString(this.lastPlayedSlot);
+        let vString = this.bsg.genVerticalString(this.lastPlayedSlot);
+        let rdString = this.bsg.genRightDiagString(this.lastPlayedSlot);
+        let ldString = this.bsg.genLeftDiagString(this.lastPlayedSlot);
 
-        // check horizontal
-        //create string of the horizontal board going through slot
-
-
-        // check vertical
-        // check diag right
-        // check diag left
-
-
-        //check the wins surrounding the last played slot
-        this.gameWon = false; //result of check
+        if(hString.includes(winString)) this.gameWon = true;
+        if(vString.includes(winString)) this.gameWon = true;
+        if(rdString.includes(winString)) this.gameWon = true;
+        if(ldString.includes(winString)) this.gameWon = true;
     }
 
     toString() {

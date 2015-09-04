@@ -238,6 +238,7 @@ describe('connect 4', ()  => {
                     board.play(4, ColourEnum.RED);
                     expect(board.gameWon).to.be.true;
                 });
+
                 it('should return true when a player wins on the bottom row', () => {
                     /*
                      . . . . . . .
@@ -254,6 +255,7 @@ describe('connect 4', ()  => {
                     board.play(4, ColourEnum.RED);
                     expect(board.gameWon).to.be.true;
                 });
+
                 it('should return true when a player wins against the far left column', () => {
                     /*
                      . . . . . . .
@@ -270,6 +272,7 @@ describe('connect 4', ()  => {
                     board.play(3, ColourEnum.RED);
                     expect(board.gameWon).to.be.true;
                 });
+
                 it('should return true when a player wins against the far right column', () => {
                     /*
                      . . . . . . .
@@ -284,17 +287,104 @@ describe('connect 4', ()  => {
                     board.play(5, ColourEnum.RED);
                     expect(board.gameWon).to.be.false;
                     board.play(6, ColourEnum.RED);
-                    console.log(board.toString());
                     expect(board.gameWon).to.be.true;
                 });
             });
 
             describe('winning vertically', () => {
-                it('should return true when a player wins');
-                it('should return true when a player wins on the top row');
-                it('should return true when a player wins on the bottom row');
-                it('should return true when a player wins against the far left column');
-                it('should return true when a player wins against the far right column');
+
+                it('should return true when a player wins', () => {
+                    /*
+                     . . . . . . .
+                     . . . R . . .
+                     . . . R . . .
+                     . . . R . . .
+                     . . . R . . .
+                     . . . . . . .
+                     */
+                    let col = 3;
+                    board.play(col, ColourEnum.BLANK);
+                    _.times(3, () => {
+                        board.play(col, ColourEnum.RED);
+                    });
+                    expect(board.gameWon).to.be.false;
+                    board.play(col, ColourEnum.RED);
+                    expect(board.gameWon).to.be.true;
+                });
+
+                it('should return true when a player wins on the top row', () => {
+                    /*
+                     . . . R . . .
+                     . . . R . . .
+                     . . . R . . .
+                     . . . R . . .
+                     . . . . . . .
+                     . . . . . . .
+                     */
+                    let col = 3;
+                    board.play(col, ColourEnum.BLANK);
+                    board.play(col, ColourEnum.BLANK);
+                    _.times(3, () => {
+                        board.play(col, ColourEnum.RED);
+                    });
+                    expect(board.gameWon).to.be.false;
+                    board.play(col, ColourEnum.RED);
+                    expect(board.gameWon).to.be.true;
+                });
+
+                it('should return true when a player wins on the bottom row', () => {
+                    /*
+                     . . . . . . .
+                     . . . . . . .
+                     . . . R . . .
+                     . . . R . . .
+                     . . . R . . .
+                     . . . R . . .
+                     */
+                    let col = 3;
+                    _.times(3, () => {
+                        board.play(col, ColourEnum.RED);
+                    });
+                    expect(board.gameWon).to.be.false;
+                    board.play(col, ColourEnum.RED);
+                    expect(board.gameWon).to.be.true;
+                });
+
+                it('should return true when a player wins against the far left column', () => {
+                    /*
+                     . . . . . . .
+                     . . . . . . .
+                     R . . . . . .
+                     R . . . . . .
+                     R . . . . . .
+                     R . . . . . .
+                     */
+                    let col = 0;
+                    _.times(3, () => {
+                        board.play(col, ColourEnum.RED);
+                    });
+                    expect(board.gameWon).to.be.false;
+                    board.play(col, ColourEnum.RED);
+                    expect(board.gameWon).to.be.true;
+                });
+
+                it('should return true when a player wins against the far right column', () => {
+                    /*
+                     . . . . . . .
+                     . . . . . . .
+                     . . . . . . R
+                     . . . . . . R
+                     . . . . . . R
+                     . . . . . . R
+                     */
+                    let col = 6;
+                    _.times(3, () => {
+                        board.play(col, ColourEnum.RED);
+                    });
+                    expect(board.gameWon).to.be.false;
+                    board.play(col, ColourEnum.RED);
+                    expect(board.gameWon).to.be.true;
+                });
             });
 
             describe('winning diagonally right', () => {

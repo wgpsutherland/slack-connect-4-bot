@@ -56,9 +56,7 @@ class Board {
      * @returns {boolean}
      */
     checkWon() {
-        let winString = this.lastPlayedSlot.symbol.repeat(4);
-        let potentialWinString = this.bsg.genPotentialWinString(this.lastPlayedSlot);
-        return potentialWinString.includes(winString);
+        return this.bsg.checkWon(this.lastPlayedSlot);
     }
 
     toString() {

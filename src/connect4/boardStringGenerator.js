@@ -8,6 +8,12 @@ class BoardStringGenerator {
         this.height = height;
     }
 
+    checkWon(counter) {
+        let winString = counter.symbol.repeat(4);
+        let potentialWinString = this.genPotentialWinString(counter);
+        return potentialWinString.includes(winString);
+    }
+
     genPotentialWinString(counter) {
         return [
             this.genHorizontalString(counter),

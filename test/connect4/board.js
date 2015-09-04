@@ -855,6 +855,5 @@ describe('connect 4', ()  => {
         describe('toString', () => {
 
         });
-        });
     });
 });

@@ -141,7 +141,7 @@ describe('connect 4', ()  => {
             it('should return the correct counter', () => {
                 let row = 0;
                 let col = 0;
-                expect(board.getCounterAt(row,col)).to.equal(board.slots[row][col]);
+                expect(board.getCounterAt(row, col)).to.equal(board.slots[row][col]);
             });
         });
 
@@ -195,7 +195,25 @@ describe('connect 4', ()  => {
         describe('checkWon', () => {
 
             describe('winning horizontally', () => {
-                it('should return true when a player wins');
+
+                it('should return true when a player wins', () => {
+                    /*  . . . . . . .
+                        . . . . . . .
+                        . . . . . . .
+                        . . . . . . .
+                        . . R R R R .
+                        . . B R B R .  */
+                    board.play(2, ColourEnum.BLUE);
+                    board.play(3, ColourEnum.RED);
+                    board.play(4, ColourEnum.BLUE);
+                    board.play(5, ColourEnum.RED);
+                    board.play(2, ColourEnum.RED);
+                    board.play(3, ColourEnum.RED);
+                    board.play(4, ColourEnum.RED);
+                    board.play(5, ColourEnum.RED);
+                    expect(board.gameWon).to.be.true;
+                });
+
                 it('should return true when a player wins on the top row');
                 it('should return true when a player wins on the bottom row');
                 it('should return true when a player wins against the far left column');

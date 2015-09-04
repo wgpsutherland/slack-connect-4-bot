@@ -2,6 +2,7 @@ const _ = require('underscore');
 
 const Slot = require('./slot');
 const Emoji = require('./emoji');
+const BoardStringGenerator = require('./boardStringGenerator');
 
 const WIDTH = 7;
 const HEIGHT = 6;
@@ -11,6 +12,7 @@ class Board {
     constructor() {
         this.slots = initialiseSlots();
         this.gameWon = false;
+        this.bsg = new BoardStringGenerator(this.slots, WIDTH, HEIGHT);
     }
 
     static get width() {
@@ -49,7 +51,30 @@ class Board {
     }
 
     checkWon() {
-        //check
+
+        //let col = this.lastPlayedSlot.col;
+        //let row = this.lastPlayedSlot.row;
+        let winString = this.lastPlayedSlot.symbol.repeat(4);
+
+        let horizontalString = this.bsg.genHorizontalString(this.lastPlayedSlot);
+        let verticalString = this.bsg.genVerticalString(this.lastPlayedSlot);
+        let rightDiagString = this.bsg.genRightDiagString(this.lastPlayedSlot);
+        let leftDiagString = this.bsg.genLeftDiagString(this.lastPlayedSlot);
+        console.log('horizontal', horizontalString);
+        console.log('vertical', verticalString);
+        console.log('right diag', rightDiagString);
+        console.log('left diag', leftDiagString);
+
+        // check horizontal
+        //create string of the horizontal board going through slot
+
+
+        // check vertical
+        // check diag right
+        // check diag left
+
+
+        //check the wins surrounding the last played slot
         this.gameWon = false; //result of check
     }
 

@@ -6,7 +6,7 @@ class MessageHelpers {
     }
 
     static containsWord(messageText, word) {
-        return messageText.toLowerCase().match(new RegExp(`\\b${word}\\b`));
+        return messageText && messageText.toLowerCase().match(new RegExp(`\\b${word}\\b`));
     }
 }
 

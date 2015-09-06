@@ -74,22 +74,18 @@ describe('connect 4', ()  => {
 
         describe('toString', () => {
 
-            const emptySlotString = Emoji.circle.white + ' ';
-            const redSlotString = Emoji.circle.red + ' ';
-            const blueSlotString = Emoji.circle.blue + ' ';
-
-            it('should be the white_circle emoji followed by a space when empty', () => {
-                expect(slot.toString()).to.equal(emptySlotString);
+            it('should be the white_circle emoji when empty', () => {
+                expect(slot.toString()).to.equal(Emoji.circle.white);
             });
 
-            it('should be the red_circle emoji followed by a space when red is played', () => {
+            it('should be the red_circle emoji when red is played', () => {
                 slot.play(ColourEnum.RED);
-                expect(slot.toString()).to.equal(redSlotString);
+                expect(slot.toString()).to.equal(Emoji.circle.red);
             });
 
-            it('should be the large_blue_circle emoji followed by a space when blue is played', () => {
+            it('should be the large_blue_circle emoji when blue is played', () => {
                 slot.play(ColourEnum.BLUE);
-                expect(slot.toString()).to.equal(blueSlotString);
+                expect(slot.toString()).to.equal(Emoji.circle.blue);
             });
         });
     });

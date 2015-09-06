@@ -17,7 +17,7 @@ class Slot {
     }
 
     toString() {
-        return this.symbol + ' ';
+        return this.symbol;
     }
 }
 

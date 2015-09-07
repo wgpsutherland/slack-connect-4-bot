@@ -1,7 +1,9 @@
 class Player {
 
-    constructor(colour) {
+    constructor(slackPlayer, colour) {
         this.colour = colour;
+        this.id = slackPlayer.id;
+        this.name = slackPlayer.name;
     }
 
     makeMove(gameState) {

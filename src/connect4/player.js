@@ -20,7 +20,6 @@ class Player {
                 // do nothing
             }
         }
-
     }
 }
 

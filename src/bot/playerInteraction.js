@@ -1,7 +1,6 @@
 const rx = require('rx');
-const _ = require('underscore');
 const MessageHelpers = require('./messageHelpers');
-const Board = require('../connect4/board')
+const Board = require('../connect4/board');
 
 class PlayerInteraction {
 
@@ -44,12 +43,10 @@ class PlayerInteraction {
 
     static postMessageWithTimeout(channel, formatMessage, scheduler, timeout) {
         let timeoutMessage = channel.send(formatMessage(timeout));
-
         let timeExpired = rx.Observable.timer(0, 1000, scheduler)
             .take(timeout + 1)
             .do((x) => timeoutMessage.updateMessage(formatMessage(`${timeout - x}`)))
             .publishLast();
-
         return {timeExpired: timeExpired, message: timeoutMessage};
     }
 }

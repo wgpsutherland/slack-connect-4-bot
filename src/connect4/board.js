@@ -54,8 +54,8 @@ class Board {
     }
 
     /**
-     * checks whether the counter just played was a winning move for that player.
-     * only looks at the positions that the counter is in, and only to see if the player
+     * Checks whether the counter just played was a winning move for that player.
+     * Only looks at the winning positions the most recent counter is in, and only checks if the player
      * that just played has won, not both players.
      * @returns {boolean}
      */

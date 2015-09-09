@@ -18,24 +18,23 @@ class PlayerInteraction {
     }
 
     static getColForPlayer(messages, channel, player, board) {
-        channel.send(`${player.name}, please choose a column.`);
+        channel.send(`@${player.name} (${player.colour}), please choose a column.`);
         let message = messages
             .where(e => {
-                var correctUser = e.user === player.id;
                 let col = parseInt(e.text) - 1;
-                var validCol = MessageHelpers.validColumnNumber(col);
-                if(!validCol) {
-                    channel.send(`${player.name}, please choose a valid column.`);
+                if (e.user !== player.id) {
                     return false;
-                } else {
-                    var colFull = board.isColumnFull(col);
-                    if (colFull) channel.send(`${player.name}, the column is full, please choose another.`);
-                    return correctUser && !colFull;
+                } else if (!MessageHelpers.validColumnNumber(col)) {
+                    channel.send(`@${player.name}, please choose a valid column.`);
+                    return false;
+                } else if (board.isColumnFull(col)) {
+                    channel.send(`@${player.name}, the column is full, please choose another.`);
+                    return false;
                 }
+                return true;
             })
             .map(e => {
-                let col = parseInt(e.text) - 1;
-                return col;
+                return parseInt(e.text) - 1;
             })
             .take(1)
             .publish();

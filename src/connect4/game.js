@@ -66,9 +66,8 @@ class Game {
     }
 
     getColumnFromPlayer() {
-        return rx.Observable.defer(() => {
-            return PlayerInteraction.getColumnFromPlayer(this.messages, this.channel, this.currentPlayer, this.board);
-        });
+        return rx.Observable.defer(() =>
+            PlayerInteraction.getColumnFromPlayer(this.messages, this.channel, this.currentPlayer, this.board));
     }
 
     move(col, colour) {

@@ -25,15 +25,13 @@ class Bot {
             .fromEvent(this.slack, 'message')
             .where(e => e.type === 'message');
 
-        let startMessages = messages.where(e => {
-            return MsgHelper.containsUserMention(e.text, this.slack.self.id) &&
-                MsgHelper.containsWord(e.text, 'start');
-        });
+        let startMessages = messages.where(e =>
+            MsgHelper.containsUserMention(e.text, this.slack.self.id) &&
+            MsgHelper.containsWord(e.text, 'start')
+        );
 
         return startMessages
-            .map(e => {
-                return this.slack.getChannelGroupOrDMByID(e.channel)
-            })
+            .map(e => this.slack.getChannelGroupOrDMByID(e.channel))
             .where(channel => {
                 if (this.isPolling) {
                     return false;

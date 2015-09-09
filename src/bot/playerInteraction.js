@@ -9,7 +9,6 @@ class PlayerInteraction {
         let {timeExpired} = PlayerInteraction.postMessageWithTimeout(channel, formatMessage, scheduler, timeout);
         let newPlayers = messages.where(e => MessageHelpers.containsWord(e.text, 'yes'))
             .map(e => e.user)
-            .distinct()
             .take(maxPlayers)
             .publish();
         newPlayers.connect();

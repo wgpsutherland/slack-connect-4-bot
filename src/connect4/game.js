@@ -1,31 +1,80 @@
+const rx = require('rx');
+
 const Board = require('./board');
 const Player = require('./player');
 const ColourEnum = require('./colourEnum');
+const PlayerInteraction = require('../bot/playerInteraction');
 
 class Game {
 
-    constructor() {
+    constructor(slack, messages, channel, players, scheduler = rx.Scheduler.timeout) {
+        this.slack = slack;
+        this.messages = messages;
+        this.channel = channel;
+        this.scheduler = scheduler;
+
         this.board = new Board();
-        this.playerOne = new Player(ColourEnum.RED);
-        this.playerTwo = new Player(ColourEnum.BLUE);
-        this.gameOver = false;
+        this.playerOne = new Player(players[0], ColourEnum.RED);
+        this.playerTwo = new Player(players[0], ColourEnum.BLUE);
+
+        this.gameEnded = new rx.Subject();
+
+        this.channel.send(this.board.toString());
     }
 
     play() {
-        while (!this.gameOver) {
-            this.nextTurn(); // change the current player to the other
-            console.log(`It is the ${this.currentPlayer.colour} player's turn`);
-            var self = this;
-            this.currentPlayer.makeMove(self);
-            this.gameOver = this.isGameOver();
-            console.log(this.board.toString());
+        rx.Observable
+            .return(true)
+            .flatMap(() => this.playTurn())
+            .repeat()
+            .takeUntil(this.gameEnded)
+            .subscribe();
+        return this.gameEnded;
+
+    }
+
+    quit(forced) {
+        this.channel.send(this.board.toString());
+        if (!forced) {
+            if (this.board.gameWon) {
+                this.channel.send(`Congrats ${this.currentPlayer.name}, you have won!`);
+            } else {
+                this.channel.send(`The board is full, it is a draw.`);
+            }
         }
-        console.log('--');
-        if(this.board.gameWon) {
-            console.log(`player ${this.currentPlayer.colour} won`)
-        } else {
-            console.log(`the board is full, it is a draw`);
-        }
+        this.gameEnded.onNext(true);
+        this.gameEnded.onCompleted();
+    }
+
+    playTurn() {
+        let turnEnded = new rx.Subject();
+        this.changePlayer(); // change the current player to the other
+
+
+        var self = this;
+
+
+        this.getColumnFromPlayer().subscribe(x => {
+
+            let col = parseInt(x);
+
+            this.currentPlayer.makeMove(self, col);
+
+            if (this.isGameOver()) {
+                this.quit();
+            } else {
+                this.channel.send(this.board.toString());
+                turnEnded.onNext(true);
+                turnEnded.onCompleted();
+            }
+        });
+        return turnEnded;
+    }
+
+    getColumnFromPlayer() {
+        return rx.Observable.defer(() => {
+            return PlayerInteraction.getColForPlayer(this.messages, this.channel, this.currentPlayer, this.board);
+        });
     }
 
     move(col, colour) {
@@ -38,10 +87,11 @@ class Game {
         return this.board.isBoardFull() || this.board.gameWon;
     }
 
-    nextTurn() {
+    changePlayer() {
         this.currentPlayer = this.currentPlayer === this.playerOne
             ? this.playerTwo
             : this.playerOne;
+        console.log(`It is ${this.currentPlayer.name}'s turn`);
     }
 }
 

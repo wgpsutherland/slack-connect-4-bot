@@ -16,7 +16,7 @@ class PlayerInteraction {
         return newPlayers.takeUntil(timeExpired); // when the time expires
     }
 
-    static getColForPlayer(messages, channel, player, board) {
+    static getColumnFromPlayer(messages, channel, player, board) {
         channel.send(`@${player.name} (${player.colour}), please choose a column.`);
         let message = messages
             .where(e => {

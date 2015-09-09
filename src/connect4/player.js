@@ -6,20 +6,8 @@ class Player {
         this.name = slackPlayer.name;
     }
 
-    makeMove(gameState) {
-
-        var slotted = false;
-
-        while(!slotted) {
-            try {
-                let col = Math.trunc(Math.random() * 7);
-                gameState.move(col, this.colour);
-                slotted = true;
-            }
-            catch(error) {
-                // do nothing
-            }
-        }
+    makeMove(gameState, col) {
+        gameState.move(col, this.colour);
     }
 }
 

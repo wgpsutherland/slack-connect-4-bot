@@ -15,7 +15,7 @@ class Game {
 
         this.board = new Board();
         this.playerOne = new Player(players[0], ColourEnum.RED);
-        this.playerTwo = new Player(players[0], ColourEnum.BLUE);
+        this.playerTwo = new Player(players[1], ColourEnum.BLUE);
 
         this.gameEnded = new rx.Subject();
 

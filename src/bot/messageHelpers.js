@@ -1,3 +1,5 @@
+const Board = require('../connect4/board');
+
 class MessageHelpers {
 
     static containsUserMention(messageText, userId) {
@@ -7,6 +9,10 @@ class MessageHelpers {
 
     static containsWord(messageText, word) {
         return messageText && messageText.toLowerCase().match(new RegExp(`\\b${word}\\b`));
+    }
+
+    static validColumnNumber(col) {
+        return col < Board.width && col >= 0;
     }
 }
 

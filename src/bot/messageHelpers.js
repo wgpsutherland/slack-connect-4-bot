@@ -10,10 +10,6 @@ class MessageHelpers {
     static containsWord(messageText, word) {
         return messageText && messageText.toLowerCase().match(new RegExp(`\\b${word}\\b`));
     }
-
-    static validColumnNumber(col) {
-        return col < Board.width && col >= 0;
-    }
 }
 
 module.exports = MessageHelpers;

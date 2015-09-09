@@ -1,6 +1,7 @@
 const rx = require('rx');
 const _ = require('underscore');
 const MessageHelpers = require('./messageHelpers');
+const Board = require('../connect4/board')
 
 class PlayerInteraction {
 
@@ -23,7 +24,7 @@ class PlayerInteraction {
                 let col = parseInt(e.text) - 1;
                 if (e.user !== player.id) {
                     return false;
-                } else if (!MessageHelpers.validColumnNumber(col)) {
+                } else if (!Board.validColumn(col)) {
                     channel.send(`${player.name}, please choose a valid column.`);
                     return false;
                 } else if (board.isColumnFull(col)) {

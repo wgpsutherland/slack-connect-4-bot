@@ -23,6 +23,10 @@ class Board {
         return HEIGHT;
     }
 
+    static validColumn(col) {
+        return col < Board.width && col >= 0;
+    }
+
     getCounterAt(row, col) {
         return this.slots[row][col];
     }

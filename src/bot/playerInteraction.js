@@ -17,17 +17,17 @@ class PlayerInteraction {
     }
 
     static getColumnFromPlayer(messages, channel, player, board) {
-        channel.send(`@${player.name} (${player.colour}), please choose a column.`);
+        channel.send(`${player.symbol} ${player.name}, please choose a column.`);
         let message = messages
             .where(e => {
                 let col = parseInt(e.text) - 1;
                 if (e.user !== player.id) {
                     return false;
                 } else if (!MessageHelpers.validColumnNumber(col)) {
-                    channel.send(`@${player.name}, please choose a valid column.`);
+                    channel.send(`${player.name}, please choose a valid column.`);
                     return false;
                 } else if (board.isColumnFull(col)) {
-                    channel.send(`@${player.name}, the column is full, please choose another.`);
+                    channel.send(`${player.name}, the column is full, please choose another.`);
                     return false;
                 }
                 return true;

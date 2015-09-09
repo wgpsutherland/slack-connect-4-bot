@@ -4,6 +4,7 @@ const Board = require('./board');
 const Player = require('./player');
 const ColourEnum = require('./colourEnum');
 const PlayerInteraction = require('../bot/playerInteraction');
+const Emoji = require('./emoji');
 
 class Game {
 
@@ -33,10 +34,11 @@ class Game {
     }
 
     quit(forced) {
-        this.channel.send(this.board.toString());
         if (!forced) {
+            this.channel.send(this.board.toString());
             if (this.board.gameWon) {
-                this.channel.send(`Congrats ${this.currentPlayer.name}, you have won!`);
+                let msg = `${Emoji.celebrate} Congrats ${this.currentPlayer.name}, you have won! ${Emoji.celebrate}`;
+                this.channel.send(msg);
             } else {
                 this.channel.send(`The board is full, it is a draw.`);
             }
@@ -83,7 +85,6 @@ class Game {
         this.currentPlayer = this.currentPlayer === this.playerOne
             ? this.playerTwo
             : this.playerOne;
-        console.log(`It is ${this.currentPlayer.name}'s turn`);
     }
 }
 

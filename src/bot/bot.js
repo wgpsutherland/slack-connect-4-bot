@@ -64,33 +64,23 @@ class Bot {
     }
 
     startGame(messages, channel, players) {
+
         if (players.length < 2) {
             channel.send('Not enough players for a game, try again later.');
             return rx.Observable.return(null);
         }
 
-        channel.send(`We have our players, let the game begin.`);
-        this.isGameRunning = true;
-        let game = new Connect4Game(this.slack, messages, channel, players);
+        channel.send(`It is ${players[0].name} vs. ${players[1].name}. *Let the game begin!*`);
 
-        // Listen for messages directed at the bot containing 'quit game.'
-        messages
-            .where(e => {
-                return MsgHelper.containsUserMention(e.text, this.slack.self.id) &&
-                    MsgHelper.containsWord(e.text, 'quit game')
-            })
-            .take(1)
-            .subscribe(e => {
-                let player = this.slack.getUserByID(e.user);
-                channel.send(`${player.name} has decided to quit the game.`);
-                game.quit(true);
-            });
+        let game = new Connect4Game(this.slack, messages, channel, players);
+        this.isGameRunning = true;
+        console.log(`A game has been started between ${players[0].name} and ${players[1].name}`);
 
         return rx.Observable
             .timer(0)
             .flatMap(() => game.play())
             .doOnCompleted(() => {
-                console.log('the game is over, we can listen for another now');
+                console.log(`The game has ended`);
                 this.isGameRunning = false;
             });
     }

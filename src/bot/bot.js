@@ -64,15 +64,13 @@ class Bot {
     }
 
     startGame(messages, channel, players) {
-        if (players.length < 1) {
+        if (players.length < 2) {
             channel.send('Not enough players for a game, try again later.');
             return rx.Observable.return(null);
         }
 
         channel.send(`We have our players, let the game begin.`);
         this.isGameRunning = true;
-
-
         let game = new Connect4Game(this.slack, messages, channel, players);
 
         // Listen for messages directed at the bot containing 'quit game.'

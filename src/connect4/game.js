@@ -30,7 +30,6 @@ class Game {
             .takeUntil(this.gameEnded)
             .subscribe();
         return this.gameEnded;
-
     }
 
     quit(forced) {
@@ -49,17 +48,10 @@ class Game {
     playTurn() {
         let turnEnded = new rx.Subject();
         this.changePlayer(); // change the current player to the other
-
-
         var self = this;
-
-
         this.getColumnFromPlayer().subscribe(x => {
-
             let col = parseInt(x);
-
             this.currentPlayer.makeMove(self, col);
-
             if (this.isGameOver()) {
                 this.quit();
             } else {

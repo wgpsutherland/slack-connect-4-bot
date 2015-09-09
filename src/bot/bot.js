@@ -27,7 +27,7 @@ class Bot {
 
         let startMessages = messages.where(e => {
             return MsgHelper.containsUserMention(e.text, this.slack.self.id) &&
-                MsgHelper.containsWord(e.text, 's');
+                MsgHelper.containsWord(e.text, 'start');
         });
 
         return startMessages

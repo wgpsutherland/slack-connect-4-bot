@@ -4,10 +4,10 @@ const MessageHelpers = require('./messageHelpers');
 
 class PlayerInteraction {
 
-    static pollPotentialPlayers(messages, channel, scheduler = rx.Scheduler.timeout, timeout = 3, maxPlayers = 2) {
+    static pollPotentialPlayers(messages, channel, scheduler = rx.Scheduler.timeout, timeout = 10, maxPlayers = 2) {
         let formatMessage = t => `Who wants to play? Respond with 'yes' in this channel in the next ${t} seconds.`;
         let {timeExpired} = PlayerInteraction.postMessageWithTimeout(channel, formatMessage, scheduler, timeout);
-        let newPlayers = messages.where(e => MessageHelpers.containsWord(e.text, 'y'))
+        let newPlayers = messages.where(e => MessageHelpers.containsWord(e.text, 'yes'))
             .map(e => e.user)
             .distinct()
             .take(maxPlayers)

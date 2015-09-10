@@ -72,7 +72,7 @@ class Game {
 
     move(col, colour) {
         if (this.board.isColumnFull(col)) throw new Error('Column full');
-        if (col > Board.width - 1 || col < 0) throw new Error('Column does not exist');
+        if (!Board.validColumn(col)) throw new Error('Column does not exist');
         this.board.play(col, colour);
     }
 

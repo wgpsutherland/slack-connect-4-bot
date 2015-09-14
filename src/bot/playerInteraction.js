@@ -21,7 +21,7 @@ class PlayerInteraction {
         let message = messages
             .where(e => {
                 let col = parseInt(e.text) - 1;
-                if (e.user !== player.id) {
+                if (e.user !== player.id || !MessageHelpers.isJustNumber(e.text)) {
                     return false;
                 } else if (!Board.validColumn(col)) {
                     channel.send(`${player.name}, please choose a valid column.`);

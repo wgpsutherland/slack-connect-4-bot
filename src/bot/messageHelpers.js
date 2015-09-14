@@ -10,6 +10,10 @@ class MessageHelpers {
     static containsWord(messageText, word) {
         return messageText && messageText.toLowerCase().match(new RegExp(`\\b${word}\\b`));
     }
+
+    static isJustNumber(messageText) {
+        return !isNaN(messageText.trim());
+    }
 }
 
 module.exports = MessageHelpers;

@@ -19,7 +19,7 @@ Inspired by [@CharlieHess/slack-poker-bot](https://github.com/CharlieHess/slack-
 
 ### Run Locally
 
-1. Create `token.txt` in the root directory and past in the API token given when creating your bot integration
+1. Create `token.txt` in the root directory and paste in the API token given when creating your bot integration
 1. `npm install`
 1. `node src/main.js`
 

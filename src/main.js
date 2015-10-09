@@ -16,4 +16,4 @@ bot.login();
 
 http.createServer(function(req, res) {
     res.end('SLACK_CONNECT_4_BOT');
-}).listen(process.env.port || 5000);
+}).listen(process.env.PORT || 5000);

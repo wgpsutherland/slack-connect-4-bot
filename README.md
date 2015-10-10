@@ -10,28 +10,32 @@ Written for fun and to practice new features found in the new ECMAScript 6 JavaS
 
 Inspired by [@CharlieHess/slack-poker-bot](https://github.com/CharlieHess/slack-poker-bot).
 
-## Getting Started
-
+## Getting started
 1. Create a new [bot integration here](https://my.slack.com/services/new/bot)
-1. Run the bot locally or have it running on a heroku server
-1. Start a game using: `@<bot-name>: start`
-1. Follow the instructions
+2. Run the bot locally or have it running on a heroku server
+3. Start a game using: `@<bot-name>: start`
+4. Follow the instructions
 
-### Run Locally
+## Running locally
+```sh
+$ git clone git@github.com:wgpsutherland/slack-connect-4-bot.git && cd slack-connect-4-bot
+$ npm install
+$ npm start
+```
+Update `token.txt` in the root directory and paste in the API token given when creating your bot integration.
 
-1. Have node installed
-1. `$ git clone https://github.com/wgpsutherland/slack-connect-4-bot.git`
-1. Create `token.txt` in the root directory and paste in the API token given when creating your bot integration
-1. `npm install`
-1. `node src/main.js`
+## Deploying to Heroku
+```sh
+$ heroku create
+$ heroku config:set SLACK_CONNECT_4_BOT_TOKEN=[Your API token]
+$ git push heroku master
+```
 
-### Heroku Server
+Alternatively, you can deploy your own copy with one click using this button:
 
-1. Install the [Heroku toolbelt](https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up)
-1. Create a new bot integration to get the API token
-1. `heroku create`
-1. `heroku config:set SLACK_CONNECT_4_BOT_TOKEN=[Your API token]`
-1. `git push heroku master`
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/wgpsutherland/slack-connect-4-bot)
+
+See the [Heroku documentation](https://devcenter.heroku.com/articles/config-vars) for more info about changing the configuration variables after deployment.
 
 ## Test
 

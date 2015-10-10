@@ -21,7 +21,7 @@ Inspired by [@CharlieHess/slack-poker-bot](https://github.com/CharlieHess/slack-
 
 1. Have node installed
 1. `$ git clone https://github.com/wgpsutherland/slack-connect-4-bot.git`
-1. Create `token.txt` in the root directory and past in the API token given when creating your bot integration
+1. Create `token.txt` in the root directory and paste in the API token given when creating your bot integration
 1. `npm install`
 1. `node src/main.js`
 

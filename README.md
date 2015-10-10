@@ -22,7 +22,7 @@ $ git clone git@github.com:wgpsutherland/slack-connect-4-bot.git && cd slack-con
 $ npm install
 $ npm start
 ```
-Update `token.txt` in the root directory and paste in the API token given when creating your bot integration.
+Create `token.txt` in the root directory and paste in the API token given when creating your bot integration.
 
 ## Deploying to Heroku
 ```sh

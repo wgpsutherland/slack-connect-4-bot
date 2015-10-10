@@ -1,0 +1,20 @@
+{
+  "name": "slack-connect-4-bot",
+  "description": "A bot that allows you to play Connect 4 on slack!",
+  "repository": "https://github.com/wgpsutherland/slack-connect-4-bot",
+  "website": "https://github.com/wgpsutherland/slack-connect-4-bot",
+  "keywords": [
+    "slack",
+    "command",
+    "bot",
+    "chat",
+    "connect 4",
+    "game"
+  ],
+  "env": {
+    "SLACK_CONNECT_4_BOT_TOKEN": {
+      "description": "Slack bot API token",
+      "required": true
+    }
+  }
+}

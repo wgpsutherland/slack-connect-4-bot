@@ -4,7 +4,7 @@ Slack Connect 4 Bot
 A bot that allows you to play Connect 4 on slack!
 Start a game in any channel or private group, and 2 people can play.
 
-![](http://i.imgur.com/SeWdgAW.png?1)
+![](http://i.imgur.com/MGaY3sz.png?1)
 
 Written for fun and to practice new features found in the new ECMAScript 6 JavaScript standard.
 

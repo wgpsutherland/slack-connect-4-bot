@@ -17,7 +17,7 @@ class PlayerInteraction {
     }
 
     static getColumnFromPlayer(messages, channel, player, board) {
-        channel.send(`${player.symbol} ${player.name}, please choose a column.`);
+        channel.send(`${player.name}, please choose a column ${player.symbol}\n${board.toString()}`);
         let message = messages
             .where(e => {
                 let col = parseInt(e.text) - 1;

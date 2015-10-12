@@ -19,8 +19,6 @@ class Game {
         this.playerTwo = new Player(players[1], ColourEnum.BLUE);
 
         this.gameEnded = new rx.Subject();
-
-        this.channel.send(this.board.toString());
     }
 
     play() {
@@ -35,12 +33,12 @@ class Game {
 
     quit(forced) {
         if (!forced) {
-            this.channel.send(this.board.toString());
+            this.channel.send(`The game is over! ${Emoji.fire}\n${this.board.toString()}`);
             if (this.board.gameWon) {
                 let msg = `${Emoji.celebrate} Congrats ${this.currentPlayer.name}, you have won! ${Emoji.celebrate}`;
                 this.channel.send(msg);
             } else {
-                this.channel.send(`The board is full, it is a draw.`);
+                this.channel.send(`${Emoji.face.neutral} The board is full, it is a draw. ${Emoji.face.neutral}`);
             }
         }
         this.gameEnded.onNext(true);
@@ -57,7 +55,6 @@ class Game {
             if (this.isGameOver()) {
                 this.quit();
             } else {
-                this.channel.send(this.board.toString());
                 turnEnded.onNext(true);
                 turnEnded.onCompleted();
             }

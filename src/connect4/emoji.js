@@ -17,5 +17,9 @@ module.exports = {
         8: ':eight:',
         9: ':nine:'
     },
-    celebrate: ':tada:'
+    celebrate: ':tada:',
+    fire: ':fire:',
+    face: {
+        neutral: ':neutral:'
+    }
 };

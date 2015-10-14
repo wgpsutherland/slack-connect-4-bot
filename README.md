@@ -12,7 +12,7 @@ Inspired by [@CharlieHess/slack-poker-bot](https://github.com/CharlieHess/slack-
 
 ## Getting started
 1. Create a new [bot integration here](https://my.slack.com/services/new/bot)
-2. Run the bot locally or have it running on a heroku server
+2. Run the bot locally, on heroku server or Docker
 3. Start a game using: `@<bot-name>: start`
 4. Follow the instructions
 

@@ -24,6 +24,12 @@ $ npm start
 ```
 Create `token.txt` in the root directory and paste in the API token given when creating your bot integration.
 
+## Running on Docker
+```sh
+$ docker pull asimpson/slack-connect-4-bot
+$ docker run -e "SLACK_CONNECT_4_BOT_TOKEN=YOUR_TOKEN" -t connect4 -d asimpson/slack-connect-4-bot
+```
+
 ## Deploying to Heroku
 ```sh
 $ heroku create

@@ -17,13 +17,16 @@ class Game {
 
         this.board = new Board();
 
-        if (gameType === GameTypeEnum.HALLOWEEN) {
-            this.playerOne = new Player(players[0], ColourEnum.GHOST);
-            this.playerTwo = new Player(players[1], ColourEnum.LANTERN);
+        var p1Colour, p2Colour;
+        if (this.gameType === GameTypeEnum.HALLOWEEN) {
+            p1Colour = ColourEnum.GHOST;
+            p2Colour = ColourEnum.LANTERN;
         } else {
-            this.playerOne = new Player(players[0], ColourEnum.RED);
-            this.playerTwo = new Player(players[1], ColourEnum.BLUE);
+            p1Colour = ColourEnum.RED;
+            p2Colour = ColourEnum.BLUE;
         }
+        this.playerOne = new Player(players[0], p1Colour);
+        this.playerTwo = new Player(players[1], p2Colour);
 
         this.gameEnded = new rx.Subject();
     }

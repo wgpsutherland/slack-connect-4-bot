@@ -43,12 +43,12 @@ class Game {
 
     quit(forced) {
         if (!forced) {
-            this.channel.send(`The game is over! ${Emoji.fire}\n${this.board.toString()}`);
+            this.channel.send(`The game is over! ${Emoji[this.gameType].fire}\n${this.board.toString()}`);
             if (this.board.gameWon) {
-                let msg = `${Emoji.celebrate} Congrats ${this.currentPlayer.name}, you have won! ${Emoji.celebrate}`;
+                let msg = `${Emoji[this.gameType].celebrate} Congrats ${this.currentPlayer.name}, you have won! ${Emoji[this.gameType].celebrate}`;
                 this.channel.send(msg);
             } else {
-                this.channel.send(`${Emoji.face.neutral} The board is full, it is a draw. ${Emoji.face.neutral}`);
+                this.channel.send(`${Emoji[this.gameType].face.neutral} The board is full, it is a draw. ${Emoji[this.gameType].face.neutral}`);
             }
         }
         this.gameEnded.onNext(true);

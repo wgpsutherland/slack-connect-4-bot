@@ -19,9 +19,18 @@ module.exports = {
         8: ':eight:',
         9: ':nine:'
     },
-    celebrate: ':tada:',
-    fire: ':fire:',
-    face: {
-        neutral: ':neutral:'
+    normal: {
+        celebrate: ':tada:',
+        fire: ':fire:',
+        face: {
+            neutral: ':neutral:'
+        }
+    },
+    halloween: {
+        celebrate: ':skull:',
+        fire: ':crystal_ball:',
+        face: {
+            neutral: ':no_mouth:'
+        }
     }
 };

@@ -27,8 +27,7 @@ module.exports = {
         circle: {
             red: ':ghost:',
             blue: ':jack_o_lantern:',
-            white: ':white_circle:',
-            black: ':black_circle:'
+            white: ':black_circle:'
         },
         celebrate: ':skull:',
         fire: ':crystal_ball:',

@@ -9,8 +9,9 @@ const HEIGHT = 6;
 
 class Board {
 
-    constructor() {
-        this.slots = initialiseSlots();
+    constructor(gameType) {
+        this.gameType = gameType;
+        this.slots = this.initialiseSlots();
         this.gameWon = false;
         this.bsg = new BoardStringGenerator(this.slots, WIDTH, HEIGHT);
     }
@@ -76,14 +77,14 @@ class Board {
         }
         return display;
     }
-}
 
-function initialiseSlots() {
-    return _.map(new Array(HEIGHT), (a, i) => {
-        return _.map(new Array(WIDTH), (b, j) => {
-            return new Slot(i, j)
-        });
-    });
+    initialiseSlots() {
+        return _.map(new Array(HEIGHT), (a, i) => {
+            return _.map(new Array(WIDTH), (b, j) => {
+                return new Slot(i, j, this.gameType);
+            }, this);
+        }, this);
+    }
 }
 
 module.exports = Board;

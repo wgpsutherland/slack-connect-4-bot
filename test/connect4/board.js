@@ -10,6 +10,7 @@ const _ = require('underscore');
 const Board = require('../../src/connect4/board');
 const ColourEnum = require('../../src/connect4/colourEnum');
 const Emoji = require('../../src/connect4/emoji');
+const GameTypeEnum = require('../../src/connect4/gameTypeEnum');
 
 //==================== TEST ============================//
 
@@ -20,7 +21,7 @@ describe('connect 4', ()  => {
         let board;
 
         beforeEach(() => {
-            board = new Board();
+            board = new Board(GameTypeEnum.NORMAL);
         });
 
         describe('static methods', () => {
@@ -47,7 +48,7 @@ describe('connect 4', ()  => {
             it('the slots should all have the white circle as their symbol', () => {
                 for (let row of board.slots) {
                     for (let slot of row) {
-                        expect(slot.symbol).to.equal(Emoji.circle.white);
+                        expect(slot.symbol).to.equal(Emoji[board.gameType].circle.white);
                     }
                 }
             });

@@ -1,12 +1,4 @@
 module.exports = {
-    circle: {
-        red: ':red_circle:',
-        blue: ':large_blue_circle:',
-        white: ':white_circle:',
-        black: ':black_circle:',
-        ghost: ':ghost:',
-        lantern: ':jack_o_lantern:'
-    },
     number: {
         0: ':zero:',
         1: ':one:',
@@ -20,6 +12,11 @@ module.exports = {
         9: ':nine:'
     },
     normal: {
+        circle: {
+            red: ':red_circle:',
+            blue: ':large_blue_circle:',
+            white: ':white_circle:'
+        },
         celebrate: ':tada:',
         fire: ':fire:',
         face: {
@@ -27,6 +24,12 @@ module.exports = {
         }
     },
     halloween: {
+        circle: {
+            red: ':ghost:',
+            blue: ':jack_o_lantern:',
+            white: ':white_circle:',
+            black: ':black_circle:'
+        },
         celebrate: ':skull:',
         fire: ':crystal_ball:',
         face: {

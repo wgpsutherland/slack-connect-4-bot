@@ -8,6 +8,7 @@ const expect = chai.expect;
 const Slot = require('../../src/connect4/slot');
 const ColourEnum = require('../../src/connect4/colourEnum');
 const Emoji = require('../../src/connect4/emoji');
+const GameTypeEnum = require('../../src/connect4/gameTypeEnum');
 
 //==================== TEST ============================//
 
@@ -18,7 +19,7 @@ describe('connect 4', ()  => {
         let slot;
 
         beforeEach(() => {
-            slot = new Slot(0, 1);
+            slot = new Slot(0, 1, GameTypeEnum.NORMAL);
         });
 
         describe('on initialisation', () => {
@@ -40,7 +41,7 @@ describe('connect 4', ()  => {
             });
 
             it('should have the white_circle emoji as its symbol', () => {
-                expect(slot.symbol).to.equal(Emoji.circle.white);
+                expect(slot.symbol).to.equal(Emoji[GameTypeEnum.NORMAL].circle.white);
             });
         });
 
@@ -53,7 +54,7 @@ describe('connect 4', ()  => {
 
             it('should have the red_circle emoji as its symbol when the player is red', () => {
                 slot.play(ColourEnum.RED);
-                expect(slot.symbol).to.equal(Emoji.circle.red);
+                expect(slot.symbol).to.equal(Emoji[GameTypeEnum.NORMAL].circle.red);
             });
 
             it('should have a colour of red when the player is red', () => {
@@ -63,7 +64,7 @@ describe('connect 4', ()  => {
 
             it('should have the large_blue_circle emoji as its symbol when the player is blue', () => {
                 slot.play(ColourEnum.BLUE);
-                expect(slot.symbol).to.equal(Emoji.circle.blue);
+                expect(slot.symbol).to.equal(Emoji[GameTypeEnum.NORMAL].circle.blue);
             });
 
             it('should have a colour of blue when the player is blue', () => {
@@ -75,17 +76,17 @@ describe('connect 4', ()  => {
         describe('toString', () => {
 
             it('should be the white_circle emoji when empty', () => {
-                expect(slot.toString()).to.equal(Emoji.circle.white);
+                expect(slot.toString()).to.equal(Emoji[GameTypeEnum.NORMAL].circle.white);
             });
 
             it('should be the red_circle emoji when red is played', () => {
                 slot.play(ColourEnum.RED);
-                expect(slot.toString()).to.equal(Emoji.circle.red);
+                expect(slot.toString()).to.equal(Emoji[GameTypeEnum.NORMAL].circle.red);
             });
 
             it('should be the large_blue_circle emoji when blue is played', () => {
                 slot.play(ColourEnum.BLUE);
-                expect(slot.toString()).to.equal(Emoji.circle.blue);
+                expect(slot.toString()).to.equal(Emoji[GameTypeEnum.NORMAL].circle.blue);
             });
         });
     });

@@ -15,18 +15,10 @@ class Game {
         this.channel = channel;
         this.gameType = gameType;
 
-        this.board = new Board();
+        this.board = new Board(this.gameType);
 
-        var p1Colour, p2Colour;
-        if (this.gameType === GameTypeEnum.HALLOWEEN) {
-            p1Colour = ColourEnum.GHOST;
-            p2Colour = ColourEnum.LANTERN;
-        } else {
-            p1Colour = ColourEnum.RED;
-            p2Colour = ColourEnum.BLUE;
-        }
-        this.playerOne = new Player(players[0], p1Colour);
-        this.playerTwo = new Player(players[1], p2Colour);
+        this.playerOne = new Player(players[0], ColourEnum.RED, this.gameType);
+        this.playerTwo = new Player(players[1], ColourEnum.BLUE, this.gameType);
 
         this.gameEnded = new rx.Subject();
     }

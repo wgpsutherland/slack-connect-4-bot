@@ -1,10 +1,12 @@
 Slack Connect 4 Bot
 ===================
 
-A bot that allows you to play Connect 4 on Slack!
-Start a game in any channel or private group, and 2 people can play.
+_BOO!_ Introducing the Halloween update, Connect 4 on Slack with a spooky twist.
+Scare the bot and play the game with a freaky makeover. 
 
-![](http://i.imgur.com/MGaY3sz.png?1)
+Start a game in any channel or private group and play with a friend.
+
+![](http://i.imgur.com/la6ngyH.png?1)
 
 Written for fun and to practice new features found in the new ECMAScript 6 JavaScript standard.
 

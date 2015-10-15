@@ -29,9 +29,9 @@ class Bot {
         let startMessages = messages
             .where(e =>
                 MsgHelper.containsUserMention(e.text, this.slack.self.id) &&
-                MsgHelper.containsWord(e.text, 'start')
-            ).map(e => {
-                if(MsgHelper.containsWord(e.text, 'boo')) {
+                MsgHelper.containsWord(e.text, 'start'))
+            .map(e => {
+                if (MsgHelper.containsWord(e.text, 'boo')) {
                     this.gameType = GameTypeEnum.HALLOWEEN;
                 } else {
                     this.gameType = GameTypeEnum.NORMAL;

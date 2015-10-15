@@ -3,7 +3,9 @@ module.exports = {
         red: ':red_circle:',
         blue: ':large_blue_circle:',
         white: ':white_circle:',
-        black: ':black_circle:'
+        black: ':black_circle:',
+        ghost: ':ghost:',
+        lantern: ':jack_o_lantern:'
     },
     number: {
         0: ':zero:',

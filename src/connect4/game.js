@@ -5,18 +5,25 @@ const Player = require('./player');
 const ColourEnum = require('./colourEnum');
 const PlayerInteraction = require('../bot/playerInteraction');
 const Emoji = require('./emoji');
+const GameTypeEnum = require('./gameTypeEnum');
 
 class Game {
 
-    constructor(slack, messages, channel, players, scheduler = rx.Scheduler.timeout) {
+    constructor(slack, messages, channel, players, gameType) {
         this.slack = slack;
         this.messages = messages;
         this.channel = channel;
-        this.scheduler = scheduler;
+        this.gameType = gameType;
 
         this.board = new Board();
-        this.playerOne = new Player(players[0], ColourEnum.RED);
-        this.playerTwo = new Player(players[1], ColourEnum.BLUE);
+
+        if (gameType === GameTypeEnum.HALLOWEEN) {
+            this.playerOne = new Player(players[0], ColourEnum.GHOST);
+            this.playerTwo = new Player(players[1], ColourEnum.LANTERN);
+        } else {
+            this.playerOne = new Player(players[0], ColourEnum.RED);
+            this.playerTwo = new Player(players[1], ColourEnum.BLUE);
+        }
 
         this.gameEnded = new rx.Subject();
     }

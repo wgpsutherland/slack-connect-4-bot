@@ -6,7 +6,7 @@ Scare the bot and play the game with a freaky makeover.
 
 Start a game in any channel or private group and play with a friend.
 
-![](http://i.imgur.com/la6ngyH.png?1)
+![](http://i.imgur.com/azrDH3h.png?1)
 
 Written for fun and to practice new features found in the new ECMAScript 6 JavaScript standard.
 

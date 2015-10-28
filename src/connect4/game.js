@@ -5,18 +5,20 @@ const Player = require('./player');
 const ColourEnum = require('./colourEnum');
 const PlayerInteraction = require('../bot/playerInteraction');
 const Emoji = require('./emoji');
+const GameTypeEnum = require('./gameTypeEnum');
 
 class Game {
 
-    constructor(slack, messages, channel, players, scheduler = rx.Scheduler.timeout) {
+    constructor(slack, messages, channel, players, gameType) {
         this.slack = slack;
         this.messages = messages;
         this.channel = channel;
-        this.scheduler = scheduler;
+        this.gameType = gameType;
 
-        this.board = new Board();
-        this.playerOne = new Player(players[0], ColourEnum.RED);
-        this.playerTwo = new Player(players[1], ColourEnum.BLUE);
+        this.board = new Board(this.gameType);
+
+        this.playerOne = new Player(players[0], ColourEnum.RED, this.gameType);
+        this.playerTwo = new Player(players[1], ColourEnum.BLUE, this.gameType);
 
         this.gameEnded = new rx.Subject();
     }
@@ -33,12 +35,12 @@ class Game {
 
     quit(forced) {
         if (!forced) {
-            this.channel.send(`The game is over! ${Emoji.fire}\n${this.board.toString()}`);
+            this.channel.send(`The game is over! ${Emoji[this.gameType].fire}\n${this.board.toString()}`);
             if (this.board.gameWon) {
-                let msg = `${Emoji.celebrate} Congrats ${this.currentPlayer.name}, you have won! ${Emoji.celebrate}`;
+                let msg = `${Emoji[this.gameType].celebrate} Congrats ${this.currentPlayer.name}, you have won! ${Emoji[this.gameType].celebrate}`;
                 this.channel.send(msg);
             } else {
-                this.channel.send(`${Emoji.face.neutral} The board is full, it is a draw. ${Emoji.face.neutral}`);
+                this.channel.send(`${Emoji[this.gameType].face.neutral} The board is full, it is a draw. ${Emoji[this.gameType].face.neutral}`);
             }
         }
         this.gameEnded.onNext(true);

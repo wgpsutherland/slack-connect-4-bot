@@ -4,6 +4,7 @@ const rx = require('rx');
 const Connect4Game = require('../connect4/game');
 const MsgHelper = require('./messageHelpers');
 const PlayerInteraction = require('./playerInteraction');
+const GameTypeEnum = require('../connect4/gameTypeEnum');
 
 class Bot {
 
@@ -25,10 +26,18 @@ class Bot {
             .fromEvent(this.slack, 'message')
             .where(e => e.type === 'message');
 
-        let startMessages = messages.where(e =>
-            MsgHelper.containsUserMention(e.text, this.slack.self.id) &&
-            MsgHelper.containsWord(e.text, 'start')
-        );
+        let startMessages = messages
+            .where(e =>
+                MsgHelper.containsUserMention(e.text, this.slack.self.id) &&
+                MsgHelper.containsWord(e.text, 'start'))
+            .map(e => {
+                if (MsgHelper.containsWord(e.text, 'boo')) {
+                    this.gameType = GameTypeEnum.HALLOWEEN;
+                } else {
+                    this.gameType = GameTypeEnum.NORMAL;
+                }
+                return e;
+            });
 
         return startMessages
             .map(e => this.slack.getChannelGroupOrDMByID(e.channel))
@@ -70,7 +79,7 @@ class Bot {
 
         channel.send(`It is ${players[0].name} vs. ${players[1].name}. *Let the game begin!*`);
 
-        let game = new Connect4Game(this.slack, messages, channel, players);
+        let game = new Connect4Game(this.slack, messages, channel, players, this.gameType);
         this.isGameRunning = true;
         console.log(`A game has been started between ${players[0].name} and ${players[1].name}`);
 

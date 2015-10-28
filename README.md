@@ -1,10 +1,12 @@
 Slack Connect 4 Bot
 ===================
 
-A bot that allows you to play Connect 4 on Slack!
-Start a game in any channel or private group, and 2 people can play.
+_BOO!_ Introducing the Halloween update, Connect 4 on Slack with a spooky twist.
+Scare the bot and play the game with a freaky makeover. 
 
-![](http://i.imgur.com/MGaY3sz.png?1)
+Start a game in any channel or private group and play with a friend.
+
+![](http://i.imgur.com/azrDH3h.png?1)
 
 Written for fun and to practice new features found in the new ECMAScript 6 JavaScript standard.
 
@@ -13,7 +15,7 @@ Inspired by [@CharlieHess/slack-poker-bot](https://github.com/CharlieHess/slack-
 ## Getting started
 1. Create a new [bot integration here](https://my.slack.com/services/new/bot)
 2. Run the bot locally or have it running on a heroku server
-3. Start a game using: `@<bot-name>: start`
+3. Start a game using: `@<bot-name>: start` or `@<bot-name>: start boo`
 4. Follow the instructions
 
 ## Running locally

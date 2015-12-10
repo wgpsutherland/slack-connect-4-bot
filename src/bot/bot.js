@@ -68,7 +68,6 @@ class Bot {
                 let messagesInChannel = messages.where(e => e.channel === channel.id);
                 if (Math.random() >= 0.5) {
                   players = players.reverse();
-                  channel.send('Players switched!');
                 }
                 return this.startGame(messagesInChannel, channel, players);
             });

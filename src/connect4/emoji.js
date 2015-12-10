@@ -44,7 +44,7 @@ module.exports = {
         celebrate: ':gift:',
         fire: ':ribbon:',
         face: {
-            neutral: ':ghost:'
+            neutral: ':snowman:'
         }
     }
 };

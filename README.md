@@ -2,7 +2,7 @@ Slack Connect 4 Bot
 ===================
 
 _Tis The Season!_ Get in the festive spirit with the Christmas update.
-`@<bot-name>: start xmas` to play with a wintery makeover.
+`@<bot-name>: start xmas` to play with a wintry makeover.
 
 _BOO!_ Introducing the Halloween update, Connect 4 on Slack with a spooky twist.
 Scare the bot and play the game with a freaky makeover. 

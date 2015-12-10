@@ -1,6 +1,9 @@
 Slack Connect 4 Bot
 ===================
 
+_Tis The Season!_ Get in the festive spirit with the Christmas update.
+`@<bot-name>: start xmas` to play with a wintery makeover.
+
 _BOO!_ Introducing the Halloween update, Connect 4 on Slack with a spooky twist.
 Scare the bot and play the game with a freaky makeover. 
 
@@ -15,7 +18,7 @@ Inspired by [@CharlieHess/slack-poker-bot](https://github.com/CharlieHess/slack-
 ## Getting started
 1. Create a new [bot integration here](https://my.slack.com/services/new/bot)
 2. Run the bot locally or have it running on a heroku server
-3. Start a game using: `@<bot-name>: start` or `@<bot-name>: start boo`
+3. Start a game using: `@<bot-name>: start`, `@<bot-name>: start boo`, or `@<bot-name>: start xmas`
 4. Follow the instructions
 
 ## Running locally

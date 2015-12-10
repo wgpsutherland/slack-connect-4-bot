@@ -33,6 +33,8 @@ class Bot {
             .map(e => {
                 if (MsgHelper.containsWord(e.text, 'boo')) {
                     this.gameType = GameTypeEnum.HALLOWEEN;
+                } else if (MsgHelper.containsWord(e.text, 'xmas')) {
+                    this.gameType = GameTypeEnum.CHRISTMAS;
                 } else {
                     this.gameType = GameTypeEnum.NORMAL;
                 }
@@ -66,6 +68,10 @@ class Bot {
             .flatMap(players => {
                 this.isPolling = false;
                 let messagesInChannel = messages.where(e => e.channel === channel.id);
+                if (Math.random() >= 0.5) {
+                  players = players.reverse();
+                  channel.send('Players switched!');
+                }
                 return this.startGame(messagesInChannel, channel, players);
             });
     }

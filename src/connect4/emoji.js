@@ -34,5 +34,17 @@ module.exports = {
         face: {
             neutral: ':no_mouth:'
         }
+    },
+    christmas: {
+        circle: {
+            red: ':santa:',
+            blue: ':christmas_tree:',
+            white: ':snowflake:'
+        },
+        celebrate: ':gift:',
+        fire: ':ribbon:',
+        face: {
+            neutral: ':ghost:'
+        }
     }
 };

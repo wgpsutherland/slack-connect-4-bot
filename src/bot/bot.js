@@ -33,6 +33,8 @@ class Bot {
             .map(e => {
                 if (MsgHelper.containsWord(e.text, 'boo')) {
                     this.gameType = GameTypeEnum.HALLOWEEN;
+                } else if (MsgHelper.containsWord(e.text, 'xmas')) {
+                    this.gameType = GameTypeEnum.CHRISTMAS;
                 } else {
                     this.gameType = GameTypeEnum.NORMAL;
                 }

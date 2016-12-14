@@ -2,3 +2,4 @@
 node_modules/
 *.iml
 token.txt
+npm-debug.log

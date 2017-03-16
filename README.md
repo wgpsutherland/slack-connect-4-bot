@@ -36,6 +36,10 @@ Alternatively, you can deploy your own copy with one click using this button:
 
 See the [Heroku documentation](https://devcenter.heroku.com/articles/config-vars) for more info about changing the configuration variables after deployment.
 
+If you are using the free version of Heroku, the bot will turn itself off after a while and will not respond to any commands on Slack.
+You can see if this has happened by the circle next to the bot's name in Slack being empty and grey, instead of green.
+Simply navigate in your browser to heroku-bot-name.herokuapp.com, and the bot will come online again.
+
 ## Test
 
 Tests can be run using `npm test`.

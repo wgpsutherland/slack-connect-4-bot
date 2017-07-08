@@ -34,7 +34,9 @@ class Game {
     }
 
     quit(forced) {
-        if (!forced) {
+        if (forced) {
+            this.channel.send(`The game has been abandoned.`);
+        } else {
             this.channel.send(`The game is over! ${Emoji[this.gameType].fire}\n${this.board.toString()}`);
             if (this.board.gameWon) {
                 let msg = `${Emoji[this.gameType].celebrate} Congrats ${this.currentPlayer.name}, you have won! ${Emoji[this.gameType].celebrate}`;
@@ -52,13 +54,17 @@ class Game {
         this.changePlayer(); // change the current player to the other
         var self = this;
         this.getColumnFromPlayer().subscribe(x => {
-            let col = parseInt(x);
-            this.currentPlayer.makeMove(self, col);
-            if (this.isGameOver()) {
-                this.quit();
+
+            if (x === 'quit') {
+                this.quit(true);
             } else {
-                turnEnded.onNext(true);
-                turnEnded.onCompleted();
+                this.currentPlayer.makeMove(self, x);
+                if (this.isGameOver()) {
+                    this.quit();
+                } else {
+                    turnEnded.onNext(true);
+                    turnEnded.onCompleted();
+                }
             }
         });
         return turnEnded;

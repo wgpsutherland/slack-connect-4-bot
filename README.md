@@ -13,7 +13,8 @@ Inspired by [@CharlieHess/slack-poker-bot](https://github.com/CharlieHess/slack-
 1. Create a new [bot integration here](https://my.slack.com/services/new/bot)
 2. Run the bot locally or have it running on a heroku server
 3. Start a game using: `@<bot-name>: start`
-4. Follow the instructions
+4. Follow the instructions the bot gives you in Slack
+5. Type `quit` to abandon a game
 
 ## Running locally
 ```sh

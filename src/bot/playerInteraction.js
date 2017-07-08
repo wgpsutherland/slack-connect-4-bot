@@ -20,6 +20,11 @@ class PlayerInteraction {
         channel.send(`${player.name}, please choose a column ${player.symbol}\n${board.toString()}`);
         let message = messages
             .where(e => {
+
+                if (e.text === 'quit') {
+                    return true;
+                }
+
                 let col = parseInt(e.text) - 1;
                 if (e.user !== player.id || isNaN(e.text)) {
                     return false;
@@ -33,7 +38,11 @@ class PlayerInteraction {
                 return true;
             })
             .map(e => {
-                return parseInt(e.text) - 1;
+                if (e.text === 'quit') {
+                    return e.text;
+                } else {
+                    return parseInt(e.text) - 1;
+                }
             })
             .take(1)
             .publish();

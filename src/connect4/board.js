@@ -4,8 +4,8 @@ const Slot = require('./slot');
 const Emoji = require('./emoji');
 const BoardStringGenerator = require('./boardStringGenerator');
 
-const WIDTH = 7;
-const HEIGHT = 6;
+const WIDTH = 10; // max 10
+const HEIGHT = 12;
 
 class Board {
 
@@ -72,7 +72,7 @@ class Board {
             }
             display += '\n';
         }
-        for (let i = 1; i <= 7; i++) {
+        for (let i = 1; i <= WIDTH; i++) {
             display += Emoji.number[i];
         }
         return display;

@@ -5,6 +5,7 @@ const Connect4Game = require('../connect4/game');
 const MsgHelper = require('./messageHelpers');
 const PlayerInteraction = require('./playerInteraction');
 const GameTypeEnum = require('../connect4/gameTypeEnum');
+const RunningGames = require('../connect4/runningGames');
 
 class Bot {
 
@@ -35,6 +36,14 @@ class Bot {
                     this.gameType = GameTypeEnum.HALLOWEEN;
                 } else if (MsgHelper.containsWord(e.text, 'xmas')) {
                     this.gameType = GameTypeEnum.CHRISTMAS;
+                } else if (MsgHelper.containsWord(e.text, 'classic')) {
+                    this.gameType = GameTypeEnum.CLASSIC;
+                } else if (MsgHelper.containsWord(e.text, 'same')) {
+                    this.gameType = GameTypeEnum.SAME;
+                } else if (MsgHelper.containsWord(e.text, 'moving')) {
+                    this.gameType = GameTypeEnum.MOVING;
+                } else if (MsgHelper.containsWord(e.text, 'seizure')) {
+                    this.gameType = GameTypeEnum.SEIZURE;
                 } else {
                     this.gameType = GameTypeEnum.NORMAL;
                 }
@@ -46,7 +55,7 @@ class Bot {
             .where(channel => {
                 if (this.isPolling) {
                     return false;
-                } else if (this.isGameRunning) {
+                } else if (RunningGames.checkGame(channel)) {
                     channel.send('There is another game in progress.');
                     return false;
                 }
@@ -58,7 +67,7 @@ class Bot {
 
     pollPlayersForGame(messages, channel) {
         this.isPolling = true;
-        return PlayerInteraction.pollPotentialPlayers(messages, channel)
+        return PlayerInteraction.pollPotentialPlayers(messages, channel, this.gameType)
             .reduce((players, id) => {
                 let user = this.slack.getUserByID(id);
                 channel.send(`${user.name} has joined the game.`);
@@ -85,7 +94,9 @@ class Bot {
         channel.send(`It is ${players[0].name} vs. ${players[1].name}. *Let the game begin!*`);
 
         let game = new Connect4Game(this.slack, messages, channel, players, this.gameType);
-        this.isGameRunning = true;
+
+        RunningGames.addGame(channel);
+
         console.log(`A game has been started between ${players[0].name} and ${players[1].name}`);
 
         return rx.Observable

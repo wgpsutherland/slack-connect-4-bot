@@ -1,11 +1,13 @@
 const rx = require('rx');
 const MessageHelpers = require('./messageHelpers');
 const Board = require('../connect4/board');
+const RunningGame = require('../connect4/runningGames');
 
 class PlayerInteraction {
 
-    static pollPotentialPlayers(messages, channel, scheduler = rx.Scheduler.timeout, timeout = 10, maxPlayers = 2) {
-        let formatMessage = t => `Who wants to play? Respond with 'yes' in this channel in the next ${t} seconds.`;
+    static pollPotentialPlayers(messages, channel, gameType, scheduler = rx.Scheduler.timeout, timeout = 30, maxPlayers = 2) {
+
+        let formatMessage = t => `Who wants to play *` + gameType + `*? Respond with 'yes' in this channel in the next ${t} seconds.`;
         let {timeExpired} = PlayerInteraction.postMessageWithTimeout(channel, formatMessage, scheduler, timeout);
         let newPlayers = messages.where(e => MessageHelpers.containsWord(e.text, 'yes'))
             .map(e => e.user)

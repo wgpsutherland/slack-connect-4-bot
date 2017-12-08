@@ -4,8 +4,8 @@ const Slot = require('./slot');
 const Emoji = require('./emoji');
 const BoardStringGenerator = require('./boardStringGenerator');
 
-const WIDTH = 10; // max 10
-const HEIGHT = 12;
+const WIDTH = 7; // max 10
+const HEIGHT = 6;
 
 class Board {
 

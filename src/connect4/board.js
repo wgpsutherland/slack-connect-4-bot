@@ -72,7 +72,7 @@ class Board {
             }
             display += '\n';
         }
-        for (let i = 1; i <= 7; i++) {
+        for (let i = 1; i <= WIDTH; i++) {
             display += Emoji.number[i];
         }
         return display;

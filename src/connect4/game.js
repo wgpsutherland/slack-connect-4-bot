@@ -6,6 +6,7 @@ const ColourEnum = require('./colourEnum');
 const PlayerInteraction = require('../bot/playerInteraction');
 const Emoji = require('./emoji');
 const GameTypeEnum = require('./gameTypeEnum');
+const RunningGames = require('../connect4/runningGames');
 
 class Game {
 
@@ -47,6 +48,8 @@ class Game {
         }
         this.gameEnded.onNext(true);
         this.gameEnded.onCompleted();
+
+        RunningGames.deleteGame(this.channel);
     }
 
     playTurn() {

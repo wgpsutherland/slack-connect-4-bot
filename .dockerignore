@@ -1,0 +1,5 @@
+.git/
+test/
+.gitignore
+Dockerfile
+README.md

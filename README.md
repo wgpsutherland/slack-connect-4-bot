@@ -11,7 +11,7 @@ Inspired by [@CharlieHess/slack-poker-bot](https://github.com/CharlieHess/slack-
 
 ## Getting started
 1. Create a new [bot integration here](https://my.slack.com/services/new/bot)
-2. Run the bot locally or have it running on a heroku server
+2. Run the bot locally, on heroku server or Docker
 3. Start a game using: `@<bot-name>: start`
 4. Follow the instructions the bot gives you in Slack
 5. Type `quit` to abandon a game
@@ -23,6 +23,12 @@ $ npm install
 $ npm start
 ```
 Create `token.txt` in the root directory and paste in the API token given when creating your bot integration.
+
+## Running on Docker
+```sh
+$ docker pull asimpson/slack-connect-4-bot
+$ docker run -e "SLACK_CONNECT_4_BOT_TOKEN=YOUR_TOKEN" --name connect4 -d asimpson/slack-connect-4-bot
+```
 
 ## Deploying to Heroku
 ```sh
